@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: 130,
+    marginTop: -5
   },
   baixo: {
     backgroundColor: "#1D2F4D",

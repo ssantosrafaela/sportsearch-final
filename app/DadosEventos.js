@@ -118,7 +118,7 @@ export default function DadosEventos() {
                         setValue={setNome}
                         value={nome}
                       />
-                      <View style={styles.tituloInput}>
+                      {/* <View style={styles.tituloInput}>
                       <Text style={styles.texto}>Modalidade:</Text>
                       </View> 
                       <TInputEvento
@@ -126,7 +126,7 @@ export default function DadosEventos() {
                         label={"Modalidade"}
                         setValue={setModalidade}
                         value={modalidade}
-                      />
+                      /> 
                       <View style={styles.tituloInput}>
                       <Text style={styles.texto}>Vagas:</Text>
                       </View>
@@ -200,6 +200,7 @@ export default function DadosEventos() {
                         setValue={setObservacoes}
                         value={observacoes}
                       />
+                      */}
                     </View>
 
                     <View style={styles.baixo}>

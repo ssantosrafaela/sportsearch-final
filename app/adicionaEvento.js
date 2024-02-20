@@ -1,0 +1,204 @@
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  StatusBar,
+} from "react-native";
+import { useNavigation } from "expo-router";
+import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
+import { KeyboardAvoidingView } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { useFonts } from "expo-font";
+import { addEventFirestore } from "../connections/firebase-store";
+
+
+export default function adicionaEvento() {
+    const nav = useNavigation();
+
+    const [local, setLocal] = useState("");
+    const [valor, setValor] = useState("");
+    const [vagas, setVagas] = useState("");
+    const [data, setData] = useState("");
+    const [horario, setHorario] = useState("");
+    const [cidade, setCidade] = useState("");
+    const [estado, setEstado] = useState("");
+    const [descricao, setdescricao] = useState("");
+
+    const [ modalidade, setModalidade] = useState("");
+
+    const [fontsLoaded] = useFonts({
+        "Archivo_ExtraCondensed-BlackItalic.ttf": require("../assets/fonts/Archivo_ExtraCondensed-BlackItalic.ttf"),
+        "Archivo_Condensed-SemiBoldItalic.ttf": require("../assets/fonts/Archivo_Condensed-SemiBoldItalic.ttf"),
+      });
+   
+      const tryCreateEvent = async () => {
+        addEventFirestore(
+          nome,
+          local,
+          cidade,
+          estado,
+          horario,
+          data,
+          vagas,
+          atualPessoas,
+          valor,
+          observacoes
+        );
+        //await AsyncStorage.setItem('user', userCredential.user.uid);
+      };
+if(fontsLoaded){      
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+    >
+      <ScrollView
+        style={{ width: "100%", height: "100%", backgroundColor: "#1d2f4d" }}
+      >
+
+<View>
+    <StatusBar backgroundColor="#1d2f4d" barStyle="light-content" />
+    <TouchableOpacity style={{marginTop: 20,}} onPress={() => nav.navigate("Home")}>
+        <Ionicons name="arrow-back" size={40} color="white" />
+    </TouchableOpacity>
+</View>
+
+<View style={styles.cima}>
+ <Text style={styles.titulo}> Dados do Evento</Text>
+</View>
+
+<View style={styles.meio}>
+    <TextInput 
+    style={styles.input}
+    onChangeText={(text) => setModalidade(text)}
+    placeholder="Modalidade"
+    placeholderTextColor={"#fff"}
+    />
+
+<TextInput 
+    style={styles.input}
+    onChangeText={(text) => setVagas(text)}
+    placeholder="Vagas"
+    placeholderTextColor={"#fff"}
+    />
+
+<TextInput 
+    style={styles.input}
+    onChangeText={(text) => setLocal(text)}
+    placeholder="Local"
+    placeholderTextColor={"#fff"}
+    />
+
+<TextInput 
+    style={styles.input}
+    onChangeText={(text) => setData(text)}
+    placeholder="Data"
+    placeholderTextColor={"#fff"}
+    />
+
+    <TextInput 
+    style={styles.input}
+    onChangeText={(text) => setHorario(text)}
+    placeholder="Horário"
+    placeholderTextColor={"#fff"}
+    />
+
+<TextInput 
+    style={styles.input}
+    onChangeText={(text) => setData(text)}
+    placeholder="Data"
+    placeholderTextColor={"#fff"}
+    />
+
+<TextInput 
+    style={styles.input}
+    onChangeText={(text) => setCidade(text)}
+    placeholder="Cidade"
+    placeholderTextColor={"#fff"}
+    />
+    <TextInput 
+    style={styles.input}
+    onChangeText={(text) => setEstado(text)}
+    placeholder="Estado"
+    placeholderTextColor={"#fff"}
+    />
+    </View>
+
+<View style={styles.baixo}>
+    <TouchableOpacity
+    style={styles.adiciona}
+    onPress={() => {
+        tryCreateEvent();
+        nav.navigate('Home')
+        }}>
+            <Text style={styles.txtBotaoAdc}>Adicionar</Text>
+        </TouchableOpacity>
+</View>
+      </ScrollView>
+    </KeyboardAvoidingView>
+  );
+}else{
+    return null;
+    }
+}
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+    },
+    cima:{
+        alignSelf: "center",
+    },
+    baixo:{
+        alignSelf: "center",
+        marginTop: 20,
+    },
+    adiciona:{
+        justifyContent: "center",
+        alignItems: "center",
+ 
+    },
+    txtBotaoAdc:{
+        borderWidth: 1,
+        borderRadius: 3,
+        width: 120,
+        height: 35,
+        marginTop: 20,
+        borderColor: "#EF3006",
+        backgroundColor: "#fff",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    titulo:{
+        fontSize: 30,
+        color: "#fff",
+        fontFamily: "Archivo_ExtraCondensed-BlackItalic.ttf", 
+        textShadowColor: "#EF3006",
+        textShadowRadius: 4,
+        marginTop: 20,
+    },
+    subtitulo:{
+        fontSize: 20,
+        color: "#fff",
+        fontFamily: "Archivo_Condensed-SemiBoldItalic.ttf",
+        textShadowColor: "#EF3006",
+        textShadowRadius: 4,
+        marginTop: 20,
+    },
+    input:{
+        borderBottomWidth: 1,
+        borderColor: "#EF3006",
+        width: "60%",
+        height: 40,
+        marginTop: 10,
+    },
+    meio:{
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 20,
+        marginBottom: 20,
+    },
+    
+
+})

@@ -17,13 +17,13 @@ export default function Cima(){
         }}
       >
         <Image
-          source={require("../assets/homeicon.png")}
+          source={require("../assets/icon.png")}
           resizeMode="contain"
           style={{
             height: 60,
             width: 60,
             borderRadius: 20,
-            
+  
            
           
             // borderRadius: 700,

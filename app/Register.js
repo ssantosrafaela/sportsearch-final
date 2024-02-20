@@ -25,12 +25,15 @@ export default function Register() {
 
   const [textNome, setNome] = useState("");
   const [textSobrenome, setSobrenome] = useState("");
+  const [textCidade, setCidade] = useState("");
+
   const [textTelefone, setTelefone] = useState("");
   const [textEmail, setEmail] = useState("");
   const [textPassword, setPassword] = useState("");
   const [textConfPassword, setConfPassword] = useState("");
   const [hidePass, setHidePass] = useState(true);
   const [hideCPass, setHideCPass] = useState(true);
+
   
   
   const [isChecked, setIsChecked] = useState(false);
@@ -83,7 +86,6 @@ export default function Register() {
     { label: "Assexual", value: "Assexual" },
     { label: "Demissexual", value: "Demissexual" }, 
     { label: "Prefiro não informar", value: "Prefiro não informar" },
-    { label: "Outro", value: "Outro" }, 
   
   ])
 
@@ -171,7 +173,14 @@ export default function Register() {
                     value={textTelefone}
                   />
 
-                  <View style={styles.inputArea}>
+                  <Entrada 
+                  text={"Cidade"}
+                  label={"Insira sua cidade "}
+                  setValue={setCidade}  
+                  value={textCidade}
+                  />
+
+                  {/* <View style={styles.inputArea}>
                     <TouchableOpacity
                       onPress={() => showMode("date")}
                       style={styles.input}
@@ -187,21 +196,48 @@ export default function Register() {
                         onChange={onChange}
                       />
                     </TouchableOpacity>
-                  </View>
+                  </View> */}
 
                   <View style={styles.select}>
+                   <View style={{marginBottom: 17}}> 
+                  <SelectList
+                      value={data}
+                      setSelected={(j) => setSelected(j)}
+                      data={data}
+                      save="key"
+                      placeholder="Selecione seu estado:"
+                      placeholderTextColor={"#fff"}
+                      dropdownStyles={{
+                        width: 270,
+                        backgroundColor: "#273854",
+                        borderColor: "#EF3006",
+                        marginBottom: 20,
+                        color: "#fff",
+                      }}
+                      boxStyles={{
+                        width: 270,
+                        height: 40,
+                        borderColor: "#EF3006",
+                        color: "#fff",
+                      }}
+                      inputStyles={{
+                        color: "white",
+                      }}
+                    />
+                    </View>
+
                     <SelectList
                       value={gnr}
                       setSelected={(e) => setGnr(e)}
                       data={gnr}
                       save="key"
                       placeholder="Selecione sua identidade de gênero:"
-
                       placeholderTextColor={"#fff"}
                       dropdownStyles={{
                         width: 270,
                         //  height: 40,
-                        backgroundColor: "#fc4821",
+                        backgroundColor: "#273854",
+                        color: "#fff",
                         borderColor: "#EF3006",
                         marginBottom: 20,
                       }}
@@ -222,10 +258,12 @@ export default function Register() {
                   save="key"
                   placeholder="Selecione sua sexualidade:"
                   placeholderTextColor={"#fff"}
+                  dropdownItemStyles={{ color: "#fff" }}
+                  item
                   dropdownStyles={{
                     width: 270,
                     //  height: 40,
-                    backgroundColor: "#fc4821",
+                    backgroundColor: "#273854",
                     borderColor: "#EF3006",
                     marginBottom: 20,
                     color: "#fff",
@@ -241,31 +279,9 @@ export default function Register() {
                   inputStyles={{ color: "white" }}
                 />
 
-                    <SelectList
-                      value={data}
-                      setSelected={(j) => setSelected(j)}
-                      data={data}
-                      save="key"
-                      placeholder="Selecione seu estado:"
-                      placeholderTextColor={"#fff"}
-                      dropdownStyles={{
-                        width: 270,
-                        backgroundColor: "#fc4821",
-                        borderColor: "#EF3006",
-                        marginBottom: 20,
-                        color: "#fff",
-                      }}
-                      boxStyles={{
-                        width: 270,
-                        height: 40,
-                        borderColor: "#EF3006",
-                        color: "#fff",
-                      }}
-                      inputStyles={{
-                        color: "white",
-                      }}
-                    />
+                    
                   </View>
+
                   <View style={styles.meio}>
                     <View style = {styles.viewDados}>
                       
@@ -314,6 +330,7 @@ export default function Register() {
                         value={textConfPassword}
                         onChangeText={(e) => setConfPassword(e)}
                         secureTextEntry={hideCPass}
+
                       />
                       <TouchableOpacity
                         style={styles.icon}
@@ -379,8 +396,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   titulo: {
-    marginTop: 30,
-    fontSize: 70,
+    marginTop: 20,
+    fontSize: 75,
     fontFamily: "Archivo_ExtraCondensed-BlackItalic.ttf",
     color: "#fff",
     textShadowColor: "#EF3006",
@@ -389,12 +406,12 @@ const styles = StyleSheet.create({
   },
   subtitulo: {
     color: "#fff",
-    fontSize: 19,
+    fontSize: 20,
     fontFamily: "Archivo_Condensed-SemiBoldItalic.ttf",
     textShadowColor: "#EF3006",
     textShadowRadius: 4,
     marginTop: 17,
-    marginBottom: 30,
+    marginBottom: 35,
   },
 
   picker: {

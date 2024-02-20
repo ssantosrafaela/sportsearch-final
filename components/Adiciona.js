@@ -8,7 +8,7 @@ export default function Adiciona(props) {
   return (
     <>
       <View style={styles.container}>
-        <TouchableOpacity style={styles.button} onPress={() => nav.navigate("DadosEventos")}>
+        <TouchableOpacity style={styles.button} onPress={() => nav.navigate("adicionaEvento")}>
           <Entypo
             name="plus"
             size={43}
@@ -28,17 +28,11 @@ const styles = StyleSheet.create({
     borderColor: "#EF3006",
     flexDirection: "row",
     backgroundColor: "#EF3006",
-    // height: "8%",
-    // width: '8%'
-    //    justifyContent: 'right',
-    //    alignItems: 'right',
-
     position: "absolute",
     bottom: 30,
     right: 47,
   },
   buttonInside: {
     padding: 10,
-    //justifyContent: "left",
   },
 });

@@ -19,6 +19,7 @@ import Baixo from "../components/Baixo";
 
 import { getProfileFromUid } from "../connections/firebase-store";
 import { auth } from "../connections/firebase-auth";
+import Adiciona from "../components/Adiciona";
 
 export default function PerfilDeVerdade() {
   const nav = useNavigation();
@@ -60,7 +61,7 @@ export default function PerfilDeVerdade() {
 
               <View>
                 <Image
-                  source={require("../assets/lalalala.jpg")} //billie.png funciona e fica bom
+                  source={require("../assets/billie.png")} //billie.png funciona e fica bom
                   resizeMode="cover"
                   style={styles.iconImg}
                 />
@@ -77,7 +78,9 @@ export default function PerfilDeVerdade() {
                 <Text style={styles.localizacao}>PORISSONAOAPARECE</Text>
               </View>
             </View>
+
           </ScrollView>
+          <Adiciona/>
           <Baixo />
         </KeyboardAvoidingView>
       </>
@@ -107,11 +110,12 @@ const styles = StyleSheet.create({
     height: 135,
     width: 135,
     borderRadius: 999,
-    borderColor: "#EF3006",
-    borderWidth: 2,
+    borderColor: "#273859",
+    borderWidth: 3,
     marginTop: -40,
     marginBottom: 10,
     alignSelf: "center",
+    backgroundColor: "#273854"
   },
   nome: {
     color: "white",

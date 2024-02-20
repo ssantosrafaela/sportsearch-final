@@ -73,13 +73,13 @@ export default function Home() {
             <Swiper style={styles.wrapper} showsButtons={true} >
               <View style={styles.slide}>
                 <Image
-                  source={require("../assets/djavan.png")}
+                  source={require("../assets/decidir.png")}
                   style={styles.image}
                 />
               </View>
               <View style={styles.slide}>
                 <Image
-                  source={require("../assets/1.png")}
+                  source={require("../assets/beneficios.png")}
                   style={styles.image}
                 />
               </View>
@@ -88,7 +88,9 @@ export default function Home() {
           <View style={styles.meio}>
             <Text style={styles.titulo}>Eventos Disponíveis</Text>
           </View>  
-
+<Evento />
+<Evento />
+<Evento />
           <View style={styles.baixo}></View>
         </ScrollView>
 
@@ -152,9 +154,8 @@ const styles = StyleSheet.create({
     marginRight: 50
   },
   image: {
-    width: 270,
-    height: 170,
-    borderRadius: 20,
+    width: 300,
+    height: 190,
     resizeMode: "stretch",
   },
   wrapper: {

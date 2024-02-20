@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Keyboard,
+  TextInput,
 } from "react-native";
 import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
 import { useNavigation } from "expo-router";
@@ -13,6 +14,7 @@ import PesquisaTop from "../components/PesquisaTop";
 import { KeyboardAvoidingView } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Cima from "../components/Cima";
 
 export default function Home() {
   const [textPesquisa, setPesquisa] = useState("");
@@ -22,54 +24,50 @@ export default function Home() {
       behavior={Platform.OS == "ios" ? "padding" : "height"}
       style={styles.containerScrollView}
     >
-      <SafeAreaView style={styles.teste}>
-        <ScrollView>
-          <View style={styles.container}>
-            <PesquisaTop
-              text={"Nome"}
-              label="Pesquisar"
-              setValue={setPesquisa}
-              value={textPesquisa}
-            />
+      <Cima />
+      <ScrollView
+        style={{ width: "100%", height: "100%", backgroundColor: "#1d2f4d" }}
+      >
 
-
-            <View style={styles.baixo}>
-              <Baixo />
+        <View style={styles.container}>
+          <TextInput 
+          placeholder="Pesquisar" 
+           placeholderTextColor={'#fff'}
+           placeholderColor={'#fff'}
+           style={styles.pesquisa} />
+           <View>
+          <TouchableOpacity style={styles.search}>
+            <Ionicons name="search" size={29} color="white" />
+            </TouchableOpacity>
             </View>
+        </View>
 
-
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+      </ScrollView>
+      <Baixo />
     </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#1D2F4D",
-  },
   containerScrollView: {
     flex: 1,
-    backgroundColor: "#1D2F4D",
+    backgroundColor: "#1d2f4d",
   },
-  text: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  teste: {
+  container:{
     flex: 1,
-    backgroundColor: "#1D2F4D",
-  },
-  baixo: {
-    width: "100%",
-    height: "8%",
-    alignItems: "center",
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    backgroundColor: "rgba(3, 48, 252, 0.1)",
+    marginTop: 20,
+  },
+  pesquisa: {
+    borderWidth: 1,
+    borderColor: "#EF3006",
+    color: "white",
+    width: 300,
+    height: 40,
+    paddingLeft: 10,
+   // marginTop: 20,
+    marginLeft: 20,
+    borderRadius: 10,
+    
   },
 });

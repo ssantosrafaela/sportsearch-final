@@ -26,6 +26,7 @@ export default function Open() {
         </Text>
       </View>
       <View style={styles.meio}>
+        <View style={{marginTop: 60}}>
         <TouchableOpacity
           style={styles.botao}
           // onPress={() => nav.navigate("Login")}
@@ -39,9 +40,11 @@ export default function Open() {
         >
           <Text style={styles.textoBotao}>Cadastrar</Text>
         </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.baixo}>
-        <Text style={styles.textoBaixo}>created by </Text>
+        <View style={{flexDirection: 'row', marginTop: 40,}}>
+        <Text style={styles.textoBaixo}>desenvolvido por </Text>
         <Text
           style={styles.url}
           onPress={() => {
@@ -50,6 +53,7 @@ export default function Open() {
         >
           @ssantosrafaela
         </Text>
+        </View>
       </View>
     </>
   ) : (
@@ -59,7 +63,7 @@ export default function Open() {
 
 const styles = StyleSheet.create({
   cima: {
-    flex: 1.6,
+    flex: 1.2,
     backgroundColor: "#1D2F4D",
     justifyContent: "center",
     alignItems: "center",
@@ -77,7 +81,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   titulo: {
-    fontSize: 70,
+    fontSize: 75,
     fontFamily: "Archivo_ExtraCondensed-BlackItalic.ttf",
     color: "#fff",
     marginTop: 190,
@@ -123,6 +127,7 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 4,
     fontFamily: "Archivo_ExtraCondensed-BlackItalic.ttf",
-    fontSize: 15,
+    fontSize: 17,
+    marginTop: 1,
   },
 });
