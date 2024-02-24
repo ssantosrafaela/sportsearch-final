@@ -4,9 +4,9 @@ import {
   addDoc,
   setDoc,
   doc,
-  getDocs
+  getDocs, getDoc
 } from "firebase/firestore";
-
+import { auth } from "./firebase-auth";
 import { app } from "./firebase-app";
 
 const db = getFirestore(app);
@@ -14,8 +14,8 @@ const db = getFirestore(app);
 //FUNCAO PARA ADD USUARIO NO FIRESTORE
 const addUserFirestore = async (
   userCredential,
-  email,
   name,
+  email,
   lasName,
   phone,
   profile
@@ -34,27 +34,27 @@ const addUserFirestore = async (
 
 // FUNCAO PARA ADD EVENTO NO FIRESTORE
 const addEventFirestore = async (
-  nomeEvento,
-  localEvento,
+  nome,
+  local,
   cidade,
   estado,
   horario,
   dataEvento,
-  totalPessoas,
+  vagas,
   atualPessoas,
   valor,
-  observacoes
+  observacoes,
 ) => {
   const uid = auth.currentUser.uid;
   const data = {
     uid: uid,
-    nomeEvento: nomeEvento,
-    localEvento: localEvento,
+    nome: nome,
+    local: local,
     cidade: cidade,
     estado: estado,
-    horario: horario,
     dataEvento: dataEvento,
-    totalPessoas: totalPessoas,
+    horario: horario,
+    vagas: vagas,
     atualPessoas: atualPessoas,
     valor: valor,
     observacoes: observacoes,

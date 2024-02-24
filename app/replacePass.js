@@ -15,6 +15,7 @@ export default function ReplacePass(){
         "Archivo_ExtraCondensed-BlackItalic.ttf": require("../assets/fonts/Archivo_ExtraCondensed-BlackItalic.ttf"),
         "Archivo_Condensed-SemiBoldItalic.ttf": require("../assets/fonts/Archivo_Condensed-SemiBoldItalic.ttf"),
       });
+
       const [userMail, setUserMail] = useState('');
  
       const replacePassword = async () => {
@@ -36,10 +37,9 @@ export default function ReplacePass(){
       }
 
     return(
-            <View style={styles.container}>
                  <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={{ backgroundColor: "#1D2F4D" }}
+            style={styles.containerScrollView}
           >
             <SafeAreaView/>
                  <View style={styles.topBack}>
@@ -73,7 +73,6 @@ export default function ReplacePass(){
                     </Pressable>
                     </View>
                     </KeyboardAvoidingView>
-            </View>
     )
 }
 
@@ -84,11 +83,17 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
     },
+    containerScrollView: {
+      width: "100%",
+      height: "100%",
+      backgroundColor: "#1d2f4d",
+    },
     formTitle:{
         color:'#fff',
-        fontSize:50,
+        fontSize:55,
         fontFamily:'Archivo_ExtraCondensed-BlackItalic.ttf',
         textShadowColor: "#EF3006",
+        textShadowOffset: { width: 4, height: 3 },
         textShadowRadius: 4,
         marginBottom:10,
     },
@@ -120,10 +125,13 @@ const styles = StyleSheet.create({
         marginBottom:10,
     },
     back: {
-        JustifyContent: "row",
-        alignItems: "left",
+       // JustifyContent: "row",
+        //alignItems: "left",
         backgroundColor: "#1D2F4D",
-        paddingRight: 40,
+        marginRight: 350,
+        marginTop:-35,
+        alignSelf: "center",
+        //paddingRight: 40,
 
       },
      topBack:{
@@ -137,6 +145,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
         paddingBottom: 20,
+        marginTop: 65,
      },
      baixo:{
         flex: 1.5,

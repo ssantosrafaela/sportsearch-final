@@ -16,6 +16,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { addUserFirestore } from '../connections/firebase-store'
 
 
+
 export default function Register() {
   const nav = useNavigation();
   const [fontsLoaded] = useFonts({

@@ -33,8 +33,10 @@ export default function PerfilDeVerdade() {
   const fetchProfile = async () => {
     const uid = auth.currentUser.uid;
     const profile = await getProfileFromUid(uid);
-    setProfile(profile);
-    console.log(profile);
+    if (profile) {
+      setProfile(profile);
+    }
+    console.log(" PROFILEEEEEEEEE" ,profile);
   };
 
   const [fontsLoaded] = useFonts({
@@ -65,18 +67,31 @@ export default function PerfilDeVerdade() {
                   resizeMode="cover"
                   style={styles.iconImg}
                 />
-             {/* <TouchableOpacity style={styles.addFotoBotao}>
-                <MaterialIcons  name="add-a-photo" size={24} color="white" style={styles.addfoto}/>
-                </TouchableOpacity>  */}
+                <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                 <Text style={styles.nome}>
-                  ERRODOFIREBASE{textProfile.nome}
+                  {textProfile.name}
                 </Text>
+                <Text style={{alignSelf: 'center', marginLeft: 5, color: 'white'}}>Ela/dela</Text> 
+                </View>
               </View>
 
               <View style={styles.localizaaipapaizinho}>
                 <MaterialIcons name="location-on" size={24} color="white" />
-                <Text style={styles.localizacao}>PORISSONAOAPARECE</Text>
+                <Text style={styles.localizacao}>Porto, PORTUGAL</Text>
               </View>
+
+              <View style={styles.bio}>
+              <Text>Aqui ta a biografia da divandinha</Text>
+              </View>
+            </View>
+
+            <View>
+              <TouchableOpacity
+                style={styles.editarPerfil}
+                onPress={() => nav.navigate("editProfile")}
+              >
+                <Text style={{ color: "white" }}>Editar Perfil</Text>
+                </TouchableOpacity>
             </View>
 
           </ScrollView>
@@ -110,8 +125,8 @@ const styles = StyleSheet.create({
     height: 135,
     width: 135,
     borderRadius: 999,
-    borderColor: "#273859",
-    borderWidth: 3,
+    borderColor: "#EF3006",
+    borderWidth: 1.4,
     marginTop: -40,
     marginBottom: 10,
     alignSelf: "center",
@@ -124,15 +139,29 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   localizaaipapaizinho: {
+    //backgroundColor: "red",
     flexDirection: "row",
     marginVertical: 6,
     alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
   },
   localizacao: {
     fontSize: 16,
     marginLeft: 4,
     color: "white",
   },
+  bio:{
+    backgroundColor: "#273854",
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#EF3006",
+    padding: 10,
+    margin: 10,
+    marginTop: 10,
+    marginBottom: 20,
+  
+  }
 //   addfoto: {
 //     position: "absolute",
 //     bottom:12,

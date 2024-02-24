@@ -26,10 +26,17 @@ import { getProfileFromUid } from "../connections/firebase-store";
 import Cima from "../components/Cima";
 
 export default function Home() {
+  const nav = useNavigation();
+
   const fetchEventos = async () => {
     const eventos = await getEventos();
-    console.log(eventos);
+    if (eventos && eventos.length > 0) {
+      setListaEventos(eventos);
+    }
+      console.log(eventos);
   };
+
+  const [listaEventos, setListaEventos] = useState([]);
 
   useEffect(() => {
     console.log("entrou no useEffect");
@@ -37,7 +44,6 @@ export default function Home() {
     console.log("saiu do useEffect");
   }, []);
 
-  const nav = useNavigation();
   const [fontsLoaded] = useFonts({
     "Archivo_ExtraCondensed-BlackItalic.ttf": require("../assets/fonts/Archivo_ExtraCondensed-BlackItalic.ttf"),
     "Archivo_Condensed-SemiBoldItalic.ttf": require("../assets/fonts/Archivo_Condensed-SemiBoldItalic.ttf"),
@@ -67,13 +73,11 @@ export default function Home() {
               marginRadius: 10,
             }}
           >
-            {/* <View style={styles.virar}>
-              <Text style={styles.titulo}>Modalidades</Text>
-            </View> */}
+      
             <Swiper style={styles.wrapper} showsButtons={true} >
               <View style={styles.slide}>
                 <Image
-                  source={require("../assets/decidir.png")}
+                  source={require("../assets/inclusao.png")}
                   style={styles.image}
                 />
               </View>
@@ -88,10 +92,25 @@ export default function Home() {
           <View style={styles.meio}>
             <Text style={styles.titulo}>Eventos Disponíveis</Text>
           </View>  
-<Evento />
-<Evento />
-<Evento />
+
           <View style={styles.baixo}></View>
+          {listaEventos.map((evento, i) => (
+          <Evento
+            key={i}
+            id={evento.id}
+            nome={evento.nome}
+            local={evento.local}
+            cidade={evento.cidade}
+            estado={evento.estado}
+            horario={evento.horario}
+            dataEvento={evento.dataEvento}
+            vagas={evento.vagas}
+            atualPessoas={evento.atualPessoas}
+            valor={evento.valor}
+            observacoes={evento.observacoes}
+          />
+        ))}
+        
         </ScrollView>
 
         <Adiciona />

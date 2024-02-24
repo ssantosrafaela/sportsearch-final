@@ -14,6 +14,7 @@ import {
   MaterialCommunityIcons,
   FontAwesome,
 } from "@expo/vector-icons";
+import { getIdToken } from "firebase/auth";
 
 export default function Evento(props) {
   const nav = useNavigation();
@@ -21,18 +22,18 @@ export default function Evento(props) {
     <>
       <View style={styles.container}>
         <View style={styles.evento}>
-          <Text style={styles.titulo}>Voleibol</Text>
+          <Text style={styles.titulo}>{props.nome}</Text>
           <View style={styles.ladoAlado}>
-            <Text style={styles.informacao}>1/10</Text>
-            <Text style={styles.informacao}>18:00</Text>
+            <Text style={styles.informacao}>{props.atualPessoas}/{props.vagas}</Text>
+            <Text style={styles.informacao}>{props.horario}</Text>
           </View>
           <View style={styles.ladoAlado}>
-            <Text style={styles.informacao}>ifsul</Text>
-            <Text style={styles.informacao}>10,00</Text>
+            <Text style={styles.informacao}>{props.local} - {props.cidade}, {props.estado}</Text>
+            <Text style={styles.informacao}>{props.valor}</Text>
           </View>
           <View style={styles.ladoAlado}>
             <Text style={styles.informacao}>
-              descrição --------------------------
+              {props.observacoes}
             </Text>
           </View>
           
@@ -43,6 +44,10 @@ export default function Evento(props) {
             <Ionicons name="person" size={50} color="white" style={styles.icone}/>
           </TouchableOpacity>
         </View>
+        </View>
+        <View style={{flexDirection: 'row', alignSelf: 'left', justifyContent: 'center', alignItems: 'center', marginTop: -15,marginLeft: 25, borderLeftWidth: 2, borderBottomWidth: 2,borderRightWidth:2, borderBottomLeftRadius:10, borderBottomRightRadius: 10, borderColor: '#EF3006', width: 'auto', padding: 5 }}>
+          <MaterialCommunityIcons name="account" size={24} color="white" />
+        <Text style={{color: 'white'}}>Criado por getName</Text>
         </View>
     </>
   );
@@ -71,7 +76,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderBottomWidth: 2,
     borderTopLeftRadius:10,
-    borderBottomLeftRadius:10,
+    borderBottomLeftRadius:0,
     borderRightWidth: 2,
   },
   informacao: {
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     alignSelf: "center",
-    alignItems: "row",
+    //alignItems: "row",
   },
   ladoAlado: {
     marginRight: 10,
@@ -117,9 +122,13 @@ const styles = StyleSheet.create({
     fontFamily: "Archivo_Condensed-SemiBoldItalic.ttf",
     textShadowColor: "#EF3006",
     textShadowRadius: 4,
+    padding: 5,
+  //  marginBottom: 30,
 
   },
   icone: {
     alignSelf: "center",
+    marginTop: 15,
+    marginBottom: 20
   }
 });

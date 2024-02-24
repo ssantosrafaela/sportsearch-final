@@ -12,16 +12,16 @@ export default function Baixo(){
                     <Entypo name="home" size={30} color='white' />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => nav.navigate('Search')}>
+                {/* <TouchableOpacity onPress={() => nav.navigate('Search')}>
                     <Ionicons name="search" size={30} color='white' />
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => nav.navigate('Notification')}>
                     <MaterialCommunityIcons
                      name="bell" size={29} color='white' />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
-                <TouchableOpacity onPress={() => nav.navigate('Settings')}>
+                <TouchableOpacity onPress={() => nav.navigate('Config')}>
                     <Ionicons name="settings" size={30} color='white' />
                 </TouchableOpacity>
 

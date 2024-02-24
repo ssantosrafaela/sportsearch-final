@@ -13,6 +13,7 @@ import { KeyboardAvoidingView } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import { addEventFirestore } from "../connections/firebase-store";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 
 export default function adicionaEvento() {
@@ -26,6 +27,22 @@ export default function adicionaEvento() {
     const [cidade, setCidade] = useState("");
     const [estado, setEstado] = useState("");
     const [descricao, setdescricao] = useState("");
+    const [nome, setNome] = useState("");
+
+    const [mode, setMode] = useState("date");
+    const [date, setDate] = useState(new Date()); 
+    const [show, setShow] = useState(false);
+
+
+    const onChange = (event, selectedDate) => {
+        setDate(selectedDate);
+        setShow(false);
+      };
+
+      const showMode = (modeToShow) => {
+        setShow(true);
+        setMode(modeToShow);
+      };
 
     const [ modalidade, setModalidade] = useState("");
 
@@ -36,16 +53,16 @@ export default function adicionaEvento() {
    
       const tryCreateEvent = async () => {
         addEventFirestore(
-          nome,
-          local,
-          cidade,
-          estado,
-          horario,
-          data,
-          vagas,
-          atualPessoas,
-          valor,
-          observacoes
+            nome,
+            local,
+            cidade,
+            estado,
+            horario,
+            dataEvento,
+            vagas,
+            atualPessoas,
+            valor,
+            observacoes,
         );
         //await AsyncStorage.setItem('user', userCredential.user.uid);
       };
@@ -72,9 +89,10 @@ if(fontsLoaded){
 <View style={styles.meio}>
     <TextInput 
     style={styles.input}
-    onChangeText={(text) => setModalidade(text)}
+    onChangeText={(text) => setNome(text)}
     placeholder="Modalidade"
     placeholderTextColor={"#fff"}
+    value = {nome}
     />
 
 <TextInput 
@@ -82,6 +100,7 @@ if(fontsLoaded){
     onChangeText={(text) => setVagas(text)}
     placeholder="Vagas"
     placeholderTextColor={"#fff"}
+    value = {vagas}
     />
 
 <TextInput 
@@ -89,40 +108,75 @@ if(fontsLoaded){
     onChangeText={(text) => setLocal(text)}
     placeholder="Local"
     placeholderTextColor={"#fff"}
+    value = {local}
     />
 
-<TextInput 
-    style={styles.input}
-    onChangeText={(text) => setData(text)}
-    placeholder="Data"
-    placeholderTextColor={"#fff"}
-    />
-
-    <TextInput 
+    {/* <TextInput 
     style={styles.input}
     onChangeText={(text) => setHorario(text)}
     placeholder="Horário"
     placeholderTextColor={"#fff"}
-    />
+    /> */}
+    <View style={styles.inputArea}>
+                    <TouchableOpacity
+                      onPress={() => showMode("time")}
+                      style={styles.input}
+                    >
+                      <Text style={{color: 'white', marginTop: 10}}>
+                        Horário{" "}
+                      </Text>
+                      <DateTimePicker
+                        value={date}
+                        mode={mode}
+                        is24Hour={true}
+                        display="default"
+                        onChange={onChange}
+                        style={{position: 'absolute',left: 120, bottom: -14, marginBottom: 20, color: "#fff"}}
+                      />
+                    </TouchableOpacity>
+                    <Text style={{position: 'absolute', left: 52, bottom: 13, fontSize: 17, color: 'white'}}>{date.toLocaleTimeString()}</Text>
+                  </View>
 
-<TextInput 
+{/* <TextInput 
     style={styles.input}
     onChangeText={(text) => setData(text)}
     placeholder="Data"
     placeholderTextColor={"#fff"}
-    />
+    /> */}
+
+<View style={styles.inputArea}>
+                    <TouchableOpacity
+                      onPress={() => showMode("date")}
+                      style={styles.input}
+                    >
+                      <Text style={{color: 'white', marginTop: 10}}>
+                        Data{" "}
+                      </Text>
+                      <DateTimePicker
+                        value={date}
+                        mode={mode}
+                        is24Hour={true}
+                        display="default"
+                        onChange={onChange}
+                        style={{position: 'absolute',left: 120, bottom: -14, marginBottom: 20, color: "#fff"}}
+                      />
+                    </TouchableOpacity>
+                    <Text style={{position: 'absolute', left: 52, bottom: 13, fontSize: 17, color: 'white'}}>{date.toLocaleDateString()}</Text>
+                  </View>
 
 <TextInput 
     style={styles.input}
     onChangeText={(text) => setCidade(text)}
     placeholder="Cidade"
     placeholderTextColor={"#fff"}
+    value ={cidade}
     />
     <TextInput 
     style={styles.input}
     onChangeText={(text) => setEstado(text)}
     placeholder="Estado"
     placeholderTextColor={"#fff"}
+    value={estado}
     />
     </View>
 
@@ -171,7 +225,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     titulo:{
-        fontSize: 30,
+        fontSize:50,
         color: "#fff",
         fontFamily: "Archivo_ExtraCondensed-BlackItalic.ttf", 
         textShadowColor: "#EF3006",
@@ -199,6 +253,18 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
     },
-    
+    inputArea:{
+        marginTop: 20,
+        flexDirection: 'row'
+    },
+    txtBotaoAdc:{
+        color: '#ef3006',
+        borderColor: "black",
+        borderWidth: 1,
+        padding: 10,
+        borderRadius: 20,
+        fontSize: 17,
+     
+    }
 
 })

@@ -49,6 +49,7 @@ const createUser = async (email, pass) => {
 const signOutFirebase = async () => {
     signOut(auth).then(() => {
         console.log("Deslogado");
+        // navigator.navigate('index');
     }).catch((error) => {
         console.warn(`Error: ${error}`);
     });
