@@ -17,7 +17,6 @@ import {
   createUser,
   signOutFirebase,
 } from "../connections/firebase-auth";
-
 // import "expo-dev-client";
 
 export default () =>  {

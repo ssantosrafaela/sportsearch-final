@@ -4,6 +4,9 @@ import { useNavigation } from "expo-router";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { signOutFirebase } from '../connections/firebase-auth';
 import { auth } from '../connections/firebase-auth';
+import { SafeAreaProvider, useSafeArea, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StatusBar } from 'react-native';
+import { StatusBarPropsIOS } from 'react-native';
 
 
 export default function Teste() {
@@ -35,18 +38,16 @@ export default function Teste() {
     })
     }
 
-    return (
-        <View style={styles.container}>
+     return (
+         <View style={{ backgroundColor: '#273854' }}>
 
-          
-
-            <TouchableOpacity onPress={logout}>
-                <Text>Logout</Text>
-            </TouchableOpacity>
-        </View>
-    )
-    }
-
+             <TouchableOpacity onPress={logout}>
+                 <Text>Logout</Text>
+         </TouchableOpacity>
+         </View>
+     )
+    
+     }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
