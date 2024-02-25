@@ -20,6 +20,8 @@ import Baixo from "../components/Baixo";
 import { getProfileFromUid } from "../connections/firebase-store";
 import { auth } from "../connections/firebase-auth";
 import Adiciona from "../components/Adiciona";
+import { ImageBackground } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function PerfilDeVerdade() {
   const nav = useNavigation();
@@ -55,7 +57,7 @@ export default function PerfilDeVerdade() {
             <View style={styles.cima}>
               <View style={{ width: "100%" }}>
                 <Image
-                  source={require("../assets/adicionar.png")}
+                  source={require("../assets/calamidade.png")}
                   resizeMode="cover"
                   style={styles.headerImg}
                 />
@@ -67,32 +69,80 @@ export default function PerfilDeVerdade() {
                   resizeMode="cover"
                   style={styles.iconImg}
                 />
+
+                <View style={{position: 'absolute', left: 210, top: 40}}>
+                    <View style={{flexDirection: 'row', backgroundColor: '#273854', borderRadius: 5, padding: 5}}>
+                  <TouchableOpacity>
+                    <Text style ={{marginRight: 4, fontSize: 16, color: 'white', textShadowColor: "#EF3006",
+    textShadowRadius: 4,}}> 0 amigos</Text>
+               
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+               
+                    <Text style ={{marginRight: 4, fontSize: 16, color: 'white', textShadowColor: "#EF3006",
+    textShadowRadius: 4,}}> 0 seguidores</Text>
+      
+                  </TouchableOpacity>
+                  </View>
+                </View>
+               
                 <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                 <Text style={styles.nome}>
                   {textProfile.name}
                 </Text>
-                <Text style={{alignSelf: 'center', marginLeft: 5, color: 'white'}}>Ela/dela</Text> 
+                <Text style={{alignSelf: 'center', marginLeft: 5, color: 'white', textShadowColor: "#EF3006",
+    textShadowRadius: 4,}}>Ela/dela</Text> 
                 </View>
               </View>
-
+             
               <View style={styles.localizaaipapaizinho}>
-                <MaterialIcons name="location-on" size={24} color="white" />
+                <MaterialIcons name="location-on" size={24} color="white" style={{ textShadowColor: "#EF3006",
+    textShadowRadius: 4,}} />
                 <Text style={styles.localizacao}>Porto, PORTUGAL</Text>
               </View>
 
               <View style={styles.bio}>
-              <Text>Aqui ta a biografia da divandinha</Text>
+              <Text style={{fontSize: 15, color: 'white',  textShadowColor: "#EF3006",
+    textShadowRadius: 4,}}>Aqui ta a biografia da pessoa, que pode ser bem grande e tal, mas por enquanto é só isso mesmo.
+              </Text>
               </View>
             </View>
 
-            <View>
+            <View style={{ position: 'absolute', left: 270, top: 167  }}>
               <TouchableOpacity
-                style={styles.editarPerfil}
+                style={{padding: 10, borderRadius: 10, backgroundColor: '#EF3006', width: 100, alignItems: 'center', justifyContent: 'center'}}
                 onPress={() => nav.navigate("editProfile")}
               >
-                <Text style={{ color: "white" }}>Editar Perfil</Text>
+                <Text style={{ color: "#1d2f4d" }}>Editar Perfil</Text>
                 </TouchableOpacity>
             </View>
+
+{/* COLOCAR DUAS VIES UMA DO LADO DA OUTRA SE NAO A ESTILIZAÇÃO VAI FICAR ERRADA
+
+AMANHA FINALIZAR O PERFIL E TERMINAR DE ESTILIZAR A HOME
+
+TERMINAR A CONCLUSAO
+
+TERMINAR METODOLOGIA
+
+COLOCAR RESULTADOS
+
+PERGUNTAR PRO VINICIUS SE AS TELAS QUE EU NAO FIZ E BOTEI NOS RESULTADOS ATE SEGUNDA EU POSSO TERMINAR NESSA ULTIMA SEMANA ANTES DE APRESENTAR
+TIPO FAZER TELA DE EDIT PROFILE, ACESSIBILIDADE, ETC E TAL*/}
+<View>
+<View style={{flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 20, borderTopWidth: 1, borderColor: '#ef3006'}}>
+<TouchableOpacity>
+  <Text style={{textShadowColor: "#EF3006",
+    textShadowRadius: 4, color: 'white', fontSize: 19, marginRight: 8}}>Eventos Participados</Text>
+</TouchableOpacity>
+<TouchableOpacity>
+  <Text style={{textShadowColor: "#EF3006",
+    textShadowRadius: 4, color: 'white', fontSize: 19, marginRight: 8}}>Eventos Criados</Text> 
+</TouchableOpacity>
+</View> 
+
+</View>
+
 
           </ScrollView>
           <Adiciona/>
@@ -116,10 +166,15 @@ const styles = StyleSheet.create({
   },
   headerImg: {
     height: 180,
-    width: "90%",
+    width: "105%",
     alignSelf: "center",
     borderRadius: 15,
     marginTop: 5,
+    borderBottomWidth: 2,
+    borderRightWidth: 2,
+    borderLeftWidth: 2,
+    borderColor: "#EF3006",
+
   },
   iconImg: {
     height: 135,
@@ -129,12 +184,12 @@ const styles = StyleSheet.create({
     borderWidth: 1.4,
     marginTop: -40,
     marginBottom: 10,
-    alignSelf: "center",
+    marginLeft: 50,
     backgroundColor: "#273854"
   },
   nome: {
     color: "white",
-    fontSize: 20,
+    fontSize: 21,
     fontWeight: "bold",
     alignSelf: "center",
   },
@@ -150,16 +205,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 4,
     color: "white",
+    textShadowColor: "#EF3006",
+    textShadowRadius: 4,
   },
   bio:{
     backgroundColor: "#273854",
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "#EF3006",
-    padding: 10,
-    margin: 10,
+    padding: 15,
+  margin: 10,
     marginTop: 10,
     marginBottom: 20,
+    height: 'auto',
+    width: '90%',
+  alignItems: "center",
+  justifyContent: "center",
+  marginLeft: 20,
+  
   
   }
 //   addfoto: {
