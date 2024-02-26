@@ -41,9 +41,9 @@ const addEventFirestore = async (
   horario,
   dataEvento,
   vagas,
-  atualPessoas,
-  valor,
-  observacoes,
+  // atualPessoas,
+  // valor,
+  // observacoes,
 ) => {
   const uid = auth.currentUser.uid;
   const data = {
@@ -55,9 +55,9 @@ const addEventFirestore = async (
     dataEvento: dataEvento,
     horario: horario,
     vagas: vagas,
-    atualPessoas: atualPessoas,
-    valor: valor,
-    observacoes: observacoes,
+    // atualPessoas: atualPessoas,
+    // valor: valor,
+    // observacoes: observacoes,
   };
   return await addDoc(collection(db, "eventos"), data);
 };

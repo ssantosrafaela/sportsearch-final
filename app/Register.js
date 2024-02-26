@@ -27,7 +27,7 @@ export default function Register() {
   const [textNome, setNome] = useState("");
   const [textSobrenome, setSobrenome] = useState("");
   const [textCidade, setCidade] = useState("");
-
+const [textPronome, setPronome] = useState("");
   const [textTelefone, setTelefone] = useState("");
   const [textEmail, setEmail] = useState("");
   const [textPassword, setPassword] = useState("");
@@ -279,7 +279,14 @@ export default function Register() {
                   }}
                   inputStyles={{ color: "white" }}
                 />
-
+                <View style={{marginTop: -13}}>
+                 <Entrada 
+                  text={"Pronome"}
+                  label={"Insira seu pronome (Ele/dele) "}
+                  setValue={setPronome}  
+                  value={textPronome}
+                  />
+</View>
                     
                   </View>
 

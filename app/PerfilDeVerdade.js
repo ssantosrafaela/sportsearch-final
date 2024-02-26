@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   Image,
   Platform,
+  Touchable,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
@@ -23,7 +24,7 @@ import Adiciona from "../components/Adiciona";
 import { ImageBackground } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function PerfilDeVerdade() {
+export default function PerfilDeVerdade(props) {
   const nav = useNavigation();
 
   useEffect(() => {
@@ -37,8 +38,10 @@ export default function PerfilDeVerdade() {
     const profile = await getProfileFromUid(uid);
     if (profile) {
       setProfile(profile);
+      setCidade(profile.cidade);
+      
     }
-    console.log(" PROFILEEEEEEEEE" ,profile);
+    console.log(" PROFILEEEEEEEEE", profile);
   };
 
   const [fontsLoaded] = useFonts({
@@ -57,7 +60,7 @@ export default function PerfilDeVerdade() {
             <View style={styles.cima}>
               <View style={{ width: "100%" }}>
                 <Image
-                  source={require("../assets/calamidade.png")}
+                  source={require("../assets/uai.png")}
                   resizeMode="cover"
                   style={styles.headerImg}
                 />
@@ -70,54 +73,108 @@ export default function PerfilDeVerdade() {
                   style={styles.iconImg}
                 />
 
-                <View style={{position: 'absolute', left: 210, top: 40}}>
-                    <View style={{flexDirection: 'row', backgroundColor: '#273854', borderRadius: 5, padding: 5}}>
-                  <TouchableOpacity>
-                    <Text style ={{marginRight: 4, fontSize: 16, color: 'white', textShadowColor: "#EF3006",
-    textShadowRadius: 4,}}> 0 amigos</Text>
-               
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-               
-                    <Text style ={{marginRight: 4, fontSize: 16, color: 'white', textShadowColor: "#EF3006",
-    textShadowRadius: 4,}}> 0 seguidores</Text>
-      
-                  </TouchableOpacity>
+                <View style={{ position: "absolute", left: 210, top: 40 }}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      backgroundColor: "#273854",
+                      borderRadius: 5,
+                      padding: 5,
+                    }}
+                  >
+                    <TouchableOpacity>
+                      <Text
+                        style={{
+                          marginRight: 4,
+                          fontSize: 16,
+                          color: "white",
+                          textShadowColor: "#EF3006",
+                          textShadowRadius: 4,
+                        }}
+                      >
+                        {" "}
+                        0 amigos
+                      </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                      <Text
+                        style={{
+                          marginRight: 4,
+                          fontSize: 16,
+                          color: "white",
+                          textShadowColor: "#EF3006",
+                          textShadowRadius: 4,
+                        }}
+                      >
+                        {" "}
+                        0 seguidores
+                      </Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
-               
-                <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                <Text style={styles.nome}>
-                  {textProfile.name}
-                </Text>
-                <Text style={{alignSelf: 'center', marginLeft: 5, color: 'white', textShadowColor: "#EF3006",
-    textShadowRadius: 4,}}>Ela/dela</Text> 
+
+                <View
+                  style={{ flexDirection: "row", justifyContent: "center" }}
+                >
+                  <Text style={styles.nome}>{textProfile.name}</Text>
+                  <Text
+                    style={{
+                      alignSelf: "center",
+                      marginLeft: 5,
+                      color: "white",
+                    }}
+                  >
+                    Ele/dele
+                  </Text>
                 </View>
               </View>
-             
+
               <View style={styles.localizaaipapaizinho}>
-                <MaterialIcons name="location-on" size={24} color="white" style={{ textShadowColor: "#EF3006",
-    textShadowRadius: 4,}} />
-                <Text style={styles.localizacao}>Porto, PORTUGAL</Text>
+                <MaterialIcons
+                  name="location-on"
+                  size={24}
+                  color="white"
+                  style={{ textShadowColor: "#EF3006", textShadowRadius: 4 }}
+                />
+                <Text style={styles.localizacao}>
+                  CIDADE, Estado
+                </Text>
               </View>
 
-              <View style={styles.bio}>
-              <Text style={{fontSize: 15, color: 'white',  textShadowColor: "#EF3006",
-    textShadowRadius: 4,}}>Aqui ta a biografia da pessoa, que pode ser bem grande e tal, mas por enquanto é só isso mesmo.
-              </Text>
+              <View style={{ alignItems: "center" }}>
+                <View style={styles.bio}>
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      color: "white",
+                      textShadowColor: "#EF3006",
+                      textShadowRadius: 4,
+                    }}
+                  >
+                    Biografia do usuário.
+                  </Text>
+                </View>
               </View>
             </View>
-
-            <View style={{ position: 'absolute', left: 270, top: 167  }}>
+            <View style={{ position: "absolute", left: 270, top: 167 }}>
               <TouchableOpacity
-                style={{padding: 10, borderRadius: 10, backgroundColor: '#EF3006', width: 100, alignItems: 'center', justifyContent: 'center'}}
+                style={{
+                  padding: 10,
+                  backgroundColor: "white",
+                  width: 100,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderWidth: 1,
+                  borderColor: "#ef3006",
+                  borderRadius: 10,
+                }}
                 onPress={() => nav.navigate("editProfile")}
               >
-                <Text style={{ color: "#1d2f4d" }}>Editar Perfil</Text>
-                </TouchableOpacity>
+                <Text style={{ color: "#ef3006" }}>Editar Perfil</Text>
+              </TouchableOpacity>
             </View>
 
-{/* COLOCAR DUAS VIES UMA DO LADO DA OUTRA SE NAO A ESTILIZAÇÃO VAI FICAR ERRADA
+            {/* COLOCAR DUAS VIES UMA DO LADO DA OUTRA SE NAO A ESTILIZAÇÃO VAI FICAR ERRADA
 
 AMANHA FINALIZAR O PERFIL E TERMINAR DE ESTILIZAR A HOME
 
@@ -126,26 +183,20 @@ TERMINAR A CONCLUSAO
 TERMINAR METODOLOGIA
 
 COLOCAR RESULTADOS
+ */}
+            <View>
+              {/* <View style={{borderTopWidth: 1,padding: 5, borderColor: "#ef3006",  justifyContent:'center'}}>
 
-PERGUNTAR PRO VINICIUS SE AS TELAS QUE EU NAO FIZ E BOTEI NOS RESULTADOS ATE SEGUNDA EU POSSO TERMINAR NESSA ULTIMA SEMANA ANTES DE APRESENTAR
-TIPO FAZER TELA DE EDIT PROFILE, ACESSIBILIDADE, ETC E TAL*/}
-<View>
-<View style={{flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 20, borderTopWidth: 1, borderColor: '#ef3006'}}>
-<TouchableOpacity>
-  <Text style={{textShadowColor: "#EF3006",
-    textShadowRadius: 4, color: 'white', fontSize: 19, marginRight: 8}}>Eventos Participados</Text>
-</TouchableOpacity>
-<TouchableOpacity>
-  <Text style={{textShadowColor: "#EF3006",
-    textShadowRadius: 4, color: 'white', fontSize: 19, marginRight: 8}}>Eventos Criados</Text> 
-</TouchableOpacity>
-</View> 
-
-</View>
-
-
+      <TouchableOpacity>
+        <Text style={{textShadowColor: "#EF3006",
+    textShadowRadius: 4, color: 'white', fontSize: 19, marginLeft: 35}}>
+          Eventos Participados
+        </Text>
+      </TouchableOpacity>
+    </View> */}
+            </View>
           </ScrollView>
-          <Adiciona/>
+          <Adiciona />
           <Baixo />
         </KeyboardAvoidingView>
       </>
@@ -174,7 +225,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 2,
     borderLeftWidth: 2,
     borderColor: "#EF3006",
-
+    backgroundColor: '#273854'
   },
   iconImg: {
     height: 135,
@@ -185,7 +236,7 @@ const styles = StyleSheet.create({
     marginTop: -40,
     marginBottom: 10,
     marginLeft: 50,
-    backgroundColor: "#273854"
+    backgroundColor: "#273854",
   },
   nome: {
     color: "white",
@@ -208,34 +259,32 @@ const styles = StyleSheet.create({
     textShadowColor: "#EF3006",
     textShadowRadius: 4,
   },
-  bio:{
+  bio: {
     backgroundColor: "#273854",
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "#EF3006",
     padding: 15,
-  margin: 10,
+    margin: 10,
     marginTop: 10,
     marginBottom: 20,
-    height: 'auto',
-    width: '90%',
-  alignItems: "center",
-  justifyContent: "center",
-  marginLeft: 20,
-  
-  
-  }
-//   addfoto: {
-//     position: "absolute",
-//     bottom:12,
-//     right: 132,
-   
-//     padding: 5,
-//     borderWidth: 2,
-//     borderColor: "white",
-//     borderRadius: 20
-//   },
-//   addFotoBotao:{
-//     backgroundColor: "#EF3006",
-//   }
+    height: "auto",
+    width: "70%",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 20,
+  },
+  //   addfoto: {
+  //     position: "absolute",
+  //     bottom:12,
+  //     right: 132,
+
+  //     padding: 5,
+  //     borderWidth: 2,
+  //     borderColor: "white",
+  //     borderRadius: 20
+  //   },
+  //   addFotoBotao:{
+  //     backgroundColor: "#EF3006",
+  //   }
 });

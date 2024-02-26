@@ -105,10 +105,7 @@ export default function Home() {
             horario={evento.horario}
             dataEvento={evento.dataEvento}
             vagas={evento.vagas}
-            atualPessoas={evento.atualPessoas}
-            valor={evento.valor}
-            observacoes={evento.observacoes}
-          />
+          />// atualPessoas={evento.atualPessoas}  valor={evento.valor} observacoes={evento.observacoes}
         ))}
         
         </ScrollView>
@@ -146,7 +143,7 @@ const styles = StyleSheet.create({
    // backgroundColor: "#d2f",
   },
   titulo: {
-    fontSize: 24,
+    fontSize: 28,
     color: "white",
     fontFamily: "Archivo_Condensed-SemiBoldItalic.ttf",
     textShadowColor: "#EF3006",

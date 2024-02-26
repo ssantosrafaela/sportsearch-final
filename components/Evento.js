@@ -22,33 +22,131 @@ export default function Evento(props) {
     <>
       <View style={styles.container}>
         <View style={styles.evento}>
-          <Text style={styles.titulo}>{props.nome}</Text>
+          <View
+            style={{
+              marginTop: 3,
+              borderBottomWidth: 2,
+              borderRadius: 15,
+              width: "auto",
+              borderWidth: "auto",
+              borderColor: "#ef3006",
+            }}
+          >
+            <Text style={styles.titulo}>{props.nome}</Text>
+          </View>
           <View style={styles.ladoAlado}>
-            <Text style={styles.informacao}>{props.atualPessoas}/{props.vagas}</Text>
+            <Text style={styles.informacao}>{props.vagas}</Text>
+            <Text style={styles.informacao}>{props.dataEvento}</Text>
+          </View>
+          <View style={styles.ladoAlado}>
+            <Text style={styles.informacao}>{props.local}</Text>
             <Text style={styles.informacao}>{props.horario}</Text>
           </View>
           <View style={styles.ladoAlado}>
-            <Text style={styles.informacao}>{props.local} - {props.cidade}, {props.estado}</Text>
-            <Text style={styles.informacao}>{props.valor}</Text>
-          </View>
-          <View style={styles.ladoAlado}>
             <Text style={styles.informacao}>
-              {props.observacoes}
+              {props.cidade}, {props.estado}
+            </Text>
+            <Text style={styles.informacao}>Valor</Text>
+          </View>
+          <View
+            style={{
+              alignSelf: "center",
+              padding: 10,
+              borderWidth: 1,
+              marginTop: 17,
+              borderRadius: 10,
+              borderColor: "#ef3006",
+              alignItems: "flex-start",
+              width: "90%",
+            }}
+          >
+            <Text
+              style={{
+                color: "white",
+                textShadowColor: "#EF3006",
+                textShadowRadius: 4,
+                fontSize: 13,
+              }}
+            >
+              Observação...
             </Text>
           </View>
-          
         </View>
         <View style={styles.participacao}>
           <TouchableOpacity>
-          <Text style={styles.textoParticipar}>Participar</Text>
-            <Ionicons name="person" size={50} color="white" style={styles.icone}/>
+            <View
+              style={{
+                marginBottom: 0,
+                borderBottomWidth: 2,
+                borderRadius: 5,
+                borderColor: "#ef3006",
+              }}
+            >
+              <Text style={styles.textoParticipar}>Participar</Text>
+            </View>
+            <Ionicons
+              name="person"
+              size={35}
+              color="white"
+              style={styles.icone}
+            />
           </TouchableOpacity>
+          <View
+            style={{
+              position: "absolute",
+              padding: 5,
+              right: 34,
+              top: 98,
+              borderRightWidth: 2,
+              borderBottomWidth: 2,
+              borderColor: "#ef3006",
+             
+            }}
+          >
+            <TouchableOpacity>
+              <Ionicons name="trash" size={24} color="white" />
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              position: "absolute",
+              padding: 5,
+              right: -2,
+              top: 98,
+              borderRightWidth: 2,
+              borderBottomWidth: 2,
+              borderColor: "#ef3006",
+              borderBottomRightRadius: 10,
+            }}
+          >
+            <TouchableOpacity>
+              <Ionicons name="create" size={24} color="white" />
+            </TouchableOpacity>
+          </View>
         </View>
-        </View>
-        <View style={{flexDirection: 'row', alignSelf: 'left', justifyContent: 'center', alignItems: 'center', marginTop: -15,marginLeft: 25, borderLeftWidth: 2, borderBottomWidth: 2,borderRightWidth:2, borderBottomLeftRadius:10, borderBottomRightRadius: 10, borderColor: '#EF3006', width: 'auto', padding: 5 }}>
-          <MaterialCommunityIcons name="account" size={24} color="white" />
-        <Text style={{color: 'white'}}>Criado por getName</Text>
-        </View>
+      </View>
+
+      <View
+        style={{
+          flexDirection: "row",
+          alignSelf: "left",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: -15,
+          marginLeft: 23.5,
+          borderLeftWidth: 2,
+          borderBottomWidth: 2,
+          borderRightWidth: 2,
+          borderBottomLeftRadius: 10,
+          borderBottomRightRadius: 10,
+          borderColor: "#EF3006",
+          width: "auto",
+          padding: 5,
+        }}
+      >
+        <MaterialCommunityIcons name="account" size={24} color="white" />
+        <Text style={{ color: "white" }}>Criado por usuário</Text>
+      </View>
     </>
   );
 }
@@ -59,33 +157,34 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#1d2f4d",
     flexDirection: "row",
-    
   },
   evento: {
     width: "70%",
-    height: 150,
-    justifyContent: "center",
+    height: 240,
+    //  justifyContent: "center",
     backgroundColor: "#1d2f4d",
-   // borderRadius: 10,
-   marginTop: 15,
-   marginBottom: 15,
+    // borderRadius: 10,
+    marginTop: 15,
+    marginBottom: 15,
     padding: 10,
-   // borderWidth: 2,
+    // borderWidth: 2,
     borderColor: "#EF3006",
     borderLeftWidth: 2,
     borderTopWidth: 2,
     borderBottomWidth: 2,
-    borderTopLeftRadius:10,
-    borderBottomLeftRadius:0,
+    borderTopLeftRadius: 10,
+    borderBottomRightRadius: 10,
     borderRightWidth: 2,
   },
   informacao: {
-    marginTop: 7,
-    fontSize: 20,
+    marginTop: 14,
+    fontSize: 17,
     fontWeight: "bold",
     color: "white",
-    alignSelf: "center",
+    // alignSelf: "center",
     //alignItems: "row",
+    textShadowColor: "#EF3006",
+    textShadowRadius: 4,
   },
   ladoAlado: {
     marginRight: 10,
@@ -95,7 +194,6 @@ const styles = StyleSheet.create({
     // alignItems: "center",
   },
   titulo: {
-    marginTop: -18,
     fontSize: 24,
     color: "white",
     fontFamily: "Archivo_Condensed-SemiBoldItalic.ttf",
@@ -104,31 +202,31 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   participacao: {
-    borderColor: '#ef3006',
+    borderColor: "#ef3006",
     borderRightWidth: 2,
     borderTopWidth: 2,
     borderBottomWidth: 2,
-    borderTopRightRadius:10,
-    borderBottomRightRadius:10,
-    height: 150,
+    borderTopRightRadius: 10,
+    height: 100,
     justifyContent: "center",
-    backgroundColor: "#273854",
+    marginBottom: 140,
   },
   textoParticipar: {
     color: "white",
-    fontSize: 18,
+    fontSize: 20,
+    padding: 10,
     fontWeight: "bold",
     alignSelf: "center",
     fontFamily: "Archivo_Condensed-SemiBoldItalic.ttf",
     textShadowColor: "#EF3006",
     textShadowRadius: 4,
     padding: 5,
-  //  marginBottom: 30,
-
+    //  marginBottom: 30,
   },
   icone: {
     alignSelf: "center",
-    marginTop: 15,
-    marginBottom: 20
-  }
+    marginTop: 10,
+    textShadowColor: "#EF3006",
+    textShadowRadius: 4,
+  },
 });
