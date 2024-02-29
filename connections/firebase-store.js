@@ -18,7 +18,6 @@ const addUserFirestore = async (
   email,
   lasName,
   phone,
-  profile
 ) => {
   const uid = auth.currentUser.uid;
   const data = {
@@ -26,7 +25,6 @@ const addUserFirestore = async (
     name: name,
     lastName: lasName,
     phone: phone,
-    profile: profile,
     email: email,
   };
   return await setDoc(doc(db, "users", uid), data);
@@ -41,9 +39,9 @@ const addEventFirestore = async (
   horario,
   dataEvento,
   vagas,
-  // atualPessoas,
-  // valor,
-  // observacoes,
+  atualPessoas,
+  valor,
+  observacoes,
 ) => {
   const uid = auth.currentUser.uid;
   const data = {
@@ -55,9 +53,9 @@ const addEventFirestore = async (
     dataEvento: dataEvento,
     horario: horario,
     vagas: vagas,
-    // atualPessoas: atualPessoas,
-    // valor: valor,
-    // observacoes: observacoes,
+    atualPessoas: atualPessoas,
+    valor: valor,
+    observacoes: observacoes,
   };
   return await addDoc(collection(db, "eventos"), data);
 };

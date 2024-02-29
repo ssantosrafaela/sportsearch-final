@@ -5,11 +5,11 @@ import {
   Text,
   TouchableOpacity,
   KeyboardAvoidingView,
-  StyleSheet
+  StyleSheet,
+  Alert,
 } from "react-native";
 import { useNavigation } from "expo-router";
 import { useFonts } from "expo-font";
-//import styles from "../components/StyleLogin";
 import { Ionicons } from "@expo/vector-icons";
 import {
   emailLogin,
@@ -17,7 +17,6 @@ import {
   createUser,
   signOutFirebase,
 } from "../connections/firebase-auth";
-// import "expo-dev-client";
 
 export default () =>  {
   const nav = useNavigation();

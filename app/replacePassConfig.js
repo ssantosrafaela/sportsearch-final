@@ -15,7 +15,7 @@ import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function ReplacePass() {
+export default function ReplacePassConfig() {
   const nav = useNavigation();
   const [fontsLoaded] = useFonts({
     "Archivo_ExtraCondensed-BlackItalic.ttf": require("../assets/fonts/Archivo_ExtraCondensed-BlackItalic.ttf"),
@@ -57,7 +57,7 @@ export default function ReplacePass() {
       <SafeAreaView />
       <View style={styles.topBack}>
         <TouchableOpacity
-          onPress={() => nav.navigate("Login")}
+          onPress={() => nav.navigate("Config")}
           style={styles.back}
         >
           <Ionicons name="arrow-back" color="#fff" size={30} />

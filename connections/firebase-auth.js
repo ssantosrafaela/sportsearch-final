@@ -11,26 +11,25 @@ import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 const auth = initializeAuth(app, {
     persistence: getReactNativePersistence(ReactNativeAsyncStorage)
 });
-
+//USER CREDENTIAL É O OBJETO COM AS CREDENCIAIS DO USUARIO
 //FUNÇÃO PARA REALIZAR O LOGIN
-const emailLogin = async (email, password) => {
-    //USER CREDENTIAL É O OBJETO COM AS CREDENCIAIS DO USUARIO
+const emailLogin = async (email, password) => { 
     const userCredential = await signInWithEmailAndPassword(auth, email, password)
-        .catch(error => { //O que fazer caso dê erro
+        .catch(error => { 
             console.warn(error)
             return null
         });
     return userCredential
 }
-
+    //CHAMA A FUNCAO DO FIREBASE E ENTAO RETORNA AS CREDENCIAIS
 //FUNCAO PARA CRIAR USUARIO
 const createUser = async (email, pass) => {
-    //CHAMA A FUNCAO DO FIREBASE E ENTAO RETORNA AS CREDENCIAIS
     const userCredential = await createUserWithEmailAndPassword(auth, email, pass)
         .catch((error) => { //CASO DE ERRO, ENTRA AQUI
-            alert(error) //Tratar o erro
+            alert(error) 
         });
-        return userCredential;
+        return userCredential;     
+    }
     //CHAMA FUNCAO EM firebase-store
    // addUserFirestore(userCredential, "Leticia Pedrinho", "123.456.789-00","53 9991730000", "27/07/1996")
 
@@ -43,7 +42,7 @@ const createUser = async (email, pass) => {
     //     console.warn(error)
     // });
 
-}
+
 
 //REALIZA O SIGNOUT NO FIREBASE
 const signOutFirebase = async () => {

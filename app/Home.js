@@ -9,19 +9,19 @@ import {
   Dimensions,
   Button
 } from "react-native";
-import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
+//import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
 import { useNavigation } from "expo-router";
 import { useFonts } from "expo-font";
 import { ScrollView } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
-import PesquisaTop from "../components/PesquisaTop";
+//import { SafeAreaView } from "react-native-safe-area-context";
+//import PesquisaTop from "../components/PesquisaTop";
 import Baixo from "../components/Baixo";
 import Adiciona from "../components/Adiciona";
 import Evento from "../components/Evento";
 import { getEventos } from "../connections/firebase-store";
-import { auth } from "../connections/firebase-auth";
+//import { auth } from "../connections/firebase-auth";
 import Swiper from "react-native-swiper";
-import { getProfileFromUid } from "../connections/firebase-store";
+//import { getProfileFromUid } from "../connections/firebase-store";
 
 import Cima from "../components/Cima";
 

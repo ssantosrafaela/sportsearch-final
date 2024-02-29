@@ -23,14 +23,7 @@ export default function Evento(props) {
       <View style={styles.container}>
         <View style={styles.evento}>
           <View
-            style={{
-              marginTop: 3,
-              borderBottomWidth: 2,
-              borderRadius: 15,
-              width: "auto",
-              borderWidth: "auto",
-              borderColor: "#ef3006",
-            }}
+            style={styles.containerTitulo}
           >
             <Text style={styles.titulo}>{props.nome}</Text>
           </View>
@@ -46,27 +39,13 @@ export default function Evento(props) {
             <Text style={styles.informacao}>
               {props.cidade}, {props.estado}
             </Text>
-            <Text style={styles.informacao}>Valor</Text>
+            <Text style={styles.informacao}>{props.valor}</Text>
           </View>
           <View
-            style={{
-              alignSelf: "center",
-              padding: 10,
-              borderWidth: 1,
-              marginTop: 17,
-              borderRadius: 10,
-              borderColor: "#ef3006",
-              alignItems: "flex-start",
-              width: "90%",
-            }}
+            style={styles.containerObs}
           >
             <Text
-              style={{
-                color: "white",
-                textShadowColor: "#EF3006",
-                textShadowRadius: 4,
-                fontSize: 13,
-              }}
+              style={styles.textoObs}
             >
               Observação...
             </Text>
@@ -229,4 +208,28 @@ const styles = StyleSheet.create({
     textShadowColor: "#EF3006",
     textShadowRadius: 4,
   },
+  containerTitulo:{
+      marginTop: 3,
+      borderBottomWidth: 2,
+      borderRadius: 15,
+      width: "auto",
+      borderWidth: "auto",
+      borderColor: "#ef3006",
+  },
+  containerObs:{
+    alignSelf: "center",
+    padding: 10,
+    borderWidth: 1,
+    marginTop: 17,
+    borderRadius: 10,
+    borderColor: "#ef3006",
+    alignItems: "flex-start",
+    width: "90%",
+  },
+  textoObs:{
+    color: "white",
+    textShadowColor: "#EF3006",
+    textShadowRadius: 4,
+    fontSize: 13,
+  }
 });

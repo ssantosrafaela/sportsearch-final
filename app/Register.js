@@ -44,11 +44,12 @@ const [textPronome, setPronome] = useState("");
       alert("senha tao diferente sem nocaaaaaaaaaaao");
       return;
     }
+
     const userCredential = await createUser(textEmail, textPassword);
     if (userCredential){
-     addUserFirestore(userCredential.user.uid, textNome, textEmail, textSobrenome, textTelefone, textPassword);
+     addUserFirestore(userCredential.user.uid, textNome, textEmail, textSobrenome, textTelefone );
       //await AsyncStorage.setItem('user', userCredential.user.uid);
-      nav.navigate('Home');
+      nav.navigate('Login');
     }else{
       alert('Deu errado hahahahahaha');
     }

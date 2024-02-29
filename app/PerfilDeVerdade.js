@@ -37,11 +37,10 @@ export default function PerfilDeVerdade(props) {
     const uid = auth.currentUser.uid;
     const profile = await getProfileFromUid(uid);
     if (profile) {
-      setProfile(profile);
-      setCidade(profile.cidade);
+      setProfile(profile, );
       
     }
-    console.log(" PROFILEEEEEEEEE", profile);
+    console.log("PROFILEEEEEEEEE", profile);
   };
 
   const [fontsLoaded] = useFonts({
@@ -116,7 +115,7 @@ export default function PerfilDeVerdade(props) {
                 <View
                   style={{ flexDirection: "row", justifyContent: "center" }}
                 >
-                  <Text style={styles.nome}>{textProfile.name}</Text>
+                  <Text style={styles.nome}>{textProfile.name}</Text> 
                   <Text
                     style={{
                       alignSelf: "center",

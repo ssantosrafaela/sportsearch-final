@@ -7,19 +7,10 @@ export default function Baixo(){
     const nav = useNavigation();
     return(
         <>
-        <View style={styles.baixo}>
+            <View style={styles.baixo}>
                 <TouchableOpacity onPress = {() => nav.navigate('Home')}>
                     <Entypo name="home" size={30} color='white' />
                 </TouchableOpacity>
-
-                {/* <TouchableOpacity onPress={() => nav.navigate('Search')}>
-                    <Ionicons name="search" size={30} color='white' />
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => nav.navigate('Notification')}>
-                    <MaterialCommunityIcons
-                     name="bell" size={29} color='white' />
-                </TouchableOpacity> */}
 
                 <TouchableOpacity onPress={() => nav.navigate('Config')}>
                     <Ionicons name="settings" size={30} color='white' />

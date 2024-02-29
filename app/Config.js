@@ -22,9 +22,11 @@ import { useFonts } from "expo-font";
 
 
 export default function Config() {
+
+  //Função para deslogar chamado nas configurações
   const trySignOut = async () => {
     signOutFirebase();
-  };
+  }; 
 
   const nav = useNavigation();
      const [fontsLoaded] = useFonts({
@@ -116,7 +118,7 @@ export default function Config() {
                   </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress = {() => nav.navigate("replacePass")} >
+                <TouchableOpacity onPress = {() => nav.navigate("replacePassConfig")} >
                   <View style={styles.linhas}>
                     <Ionicons
                       name="key"
@@ -244,8 +246,9 @@ export default function Config() {
 
                 }
                 onPress={() => {
-                  trySignOut();
-                  nav.navigate("index");
+                  // trySignOut();
+                  // nav.navigate("index");
+                  nav.navigate("teste");
                 }}
               >
                 <Text style={{ color: "#ef3006", fontSize:22 }}>Sair</Text>
