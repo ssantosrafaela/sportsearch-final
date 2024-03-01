@@ -89,7 +89,7 @@ const [textPronome, setPronome] = useState("");
     { label: "Demissexual", value: "Demissexual" }, 
     { label: "Prefiro não informar", value: "Prefiro não informar" },
   
-  ])
+  ]);
 
   const [selected, setSelected] = useState("");
   const data = [

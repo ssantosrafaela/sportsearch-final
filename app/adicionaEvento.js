@@ -13,6 +13,7 @@ import { KeyboardAvoidingView } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import { addEventFirestore } from "../connections/firebase-store";
+import { SelectList } from "react-native-dropdown-select-list";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 export default function adicionaEvento() {
@@ -31,6 +32,209 @@ export default function adicionaEvento() {
   const [mode, setMode] = useState("date");
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
+
+
+  const [numeros, setNumeros] = useState([
+    {
+      label: "1",
+      value: "1",
+    },
+    {
+      label: "2",
+      value: "2",
+    },
+    {
+      label: "3",
+      value: "3",
+    },
+    {
+      label: "4",
+      value: "4",
+    },
+    {
+      label: "5",
+      value: "5",
+    },
+    {
+      label: "6",
+      value: "6",
+    },
+    {
+      label: "7",
+      value: "7",
+    },
+    {
+      label: "8",
+      value: "8",
+    },
+    {
+      label: "9",
+      value: "9",
+    },
+    {
+      label: "10"},
+    {
+      label: "11",
+      value: "11",
+    },
+    {
+      label: "12",
+      value: "12",
+    },
+    {
+      label: "13",
+      value: "13",
+    },
+    {
+      label: "14",
+      value: "14",
+    },
+    {
+      label: "15",
+      value: "15",
+    },
+    {
+      label: "16",
+      value: "16",
+    },
+    {
+      label: "17",
+      value: "17",
+    },
+    {
+      label: "18",
+      value: "18",
+    },
+    {
+      label: "19",
+      value: "19",
+    },
+    {
+      label: "20",
+      value: "20",
+    },
+    {
+      label: "21",
+      value: "21",
+    },
+    {
+      label: "22",
+      value: "22",
+    },
+    {
+      label: "23",
+      value: "23",
+    },
+    {
+      label: "24",
+      value: "24",
+    },
+    {
+      label: "25",
+      value: "25",
+    },
+    {
+      label: "26",
+      value: "26",
+    },
+    {
+      label: "27",
+      value: "27",
+    },
+    {
+      label: "28",
+      value: "28",
+    },
+    {
+      label: "29",
+      value: "29",
+    },
+    {
+      label: "30",
+      value: "30",
+    },
+    {
+      label: "31",
+      value: "31",
+    },
+    {
+      label: "32",
+      value: "32",
+    },
+    {
+      label: "33",
+      value: "33",
+    },
+    {
+      label: "34",
+      value: "34",
+    },
+    {
+      label: "35",
+      value: "35",
+    },
+    {
+      label: "36",
+      value: "36",
+    },
+    {
+      label: "37",
+      value: "37",
+    },
+    {
+      label: "38",
+      value: "38",
+    },
+    {
+      label: "39",
+      value: "39",
+    },
+    {
+      label: "40",
+      value: "40",
+    },
+    {
+      label: "41",
+      value: "41",
+    },
+    {
+      label: "42",
+      value: "42",
+    },
+    {
+      label: "43",
+      value: "43",
+    },
+    {
+      label: "44",
+      value: "44",
+    },
+    {
+      label: "45",
+      value: "45",
+    },
+    {
+      label: "46",
+      value: "46",
+    },
+    {
+      label: "47",
+      value: "47",
+    },
+    {
+      label: "48",
+      value: "48",
+    },
+    {
+      label: "49",
+      value: "49",
+    },
+    {
+      label: "50",
+      value: "50",
+    },
+  ]);
+
 
   const onChange = (event, selectedDate) => {
     setDate(selectedDate);
@@ -85,13 +289,41 @@ export default function adicionaEvento() {
               value={nome}
             />
 
-            <TextInput
+            {/* <TextInput
               style={styles.input}
               onChangeText={(text) => setVagas(text)}
               placeholder="Vagas"
               placeholderTextColor={"#fff"}
               value={vagas}
-            />
+            /> */}
+
+<SelectList
+                  value={numeros}
+                  setSelected={(e) => setNumeros(e)}
+                  data={numeros}
+                  save="key"
+                  placeholder="Selecione o número de vagas"
+                  placeholderTextColor={"#fff"}
+                  dropdownItemStyles={{ color: "#fff" }}
+                  item
+                  dropdownStyles={{
+                    width: 270,
+                    //  height: 40,
+                    backgroundColor: "#273854",
+                    borderColor: "#EF3006",
+                    marginBottom: 20,
+                    color: "#fff",
+                    
+                  }}
+                  boxStyles={{
+                    width: 270,
+                    height: 45,
+                    borderColor: "#EF3006",
+                    marginBottom: 20,
+                    color: "#fff",
+                  }}
+                  inputStyles={{ color: "white" }}
+                />
 
               <TouchableOpacity onPress={() => nav.navigate("testedois")} style={{ marginTop: 28, marginBottom: -10, borderBottomColor: '#ef3006', borderBottomWidth: 1, width: 235}}>
             <View style={{flexDirection: 'row',     justifyContent: "space-between",}}>

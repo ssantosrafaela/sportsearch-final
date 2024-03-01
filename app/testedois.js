@@ -141,7 +141,6 @@ export default function App() {
      <TouchableOpacity  style={{borderWidth: 1, marginTop: 15, marginBottom: 30, alignItems: 'center', width: '40%', backgroundColor: 'white', marginLeft: 20, padding: 10, borderColor: '#ef3006', borderRadius: 10}} onPress={reverseGeocode}><Text style={{color: '#ef3006'}}>Confirmar Endereço: </Text></TouchableOpacity>
 
         <MapView
-          provider={PROVIDER_GOOGLE}
           ref={mapRef}
           style={styles.map}
           onRegionChange={onRegionChange}
