@@ -32,9 +32,15 @@ export default function PerfilDeVerdade(props) {
   }, []);
 
   const [textProfile, setProfile] = useState("");
+  const [textCidade, setCidade] = useState("");
 
   const fetchProfile = async () => {
     const uid = auth.currentUser.uid;
+    const cidade = await getProfileFromUid(uid);
+    if (cidade) {
+      setCidade(cidade);
+    }
+
     const profile = await getProfileFromUid(uid);
     if (profile) {
       setProfile(profile, );

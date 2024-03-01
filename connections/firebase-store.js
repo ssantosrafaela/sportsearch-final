@@ -4,7 +4,9 @@ import {
   addDoc,
   setDoc,
   doc,
-  getDocs, getDoc
+  getDocs, getDoc,
+  deleteDoc,
+  deleteUser,
 } from "firebase/firestore";
 import { auth } from "./firebase-auth";
 import { app } from "./firebase-app";
@@ -82,9 +84,16 @@ const getEventos = async () =>{
   listDocs = querySnapshot.docs.map((d) => d.data())
   return listDocs;  
 }
+const deleteUserStore = async () => {
+  const user = auth.currentUser;
+  deleteUser(user).then(() => {
+      console.log("Deletado");
+  }).catch((error) => {
+      console.warn(`Error: ${error}`);
+  });
+}
 
-
-export { addUserFirestore, getProfileFromUid, addEventFirestore, getEventos };
+export { addUserFirestore, getProfileFromUid, addEventFirestore, getEventos, deleteUserStore};
 
 // usuário oferecer esportes e poder participar de outros esportes oferecidos por outros usuários (ex: futebol, vôlei, basquete, etc).
 // O usuário poderá oferecer um esporte e definir o local, data e horário que ele será realizado.

@@ -18,6 +18,28 @@ import { getIdToken } from "firebase/auth";
 
 export default function Evento(props) {
   const nav = useNavigation();
+
+  const [icon, setIcon] = useState("account-multiple-plus-outline");
+  const [borderColor, setBorderColor] = useState("#ef3006");
+  const [textEntrar, setTextEntrar] = useState("Entrar");
+  const [adicionaVaga, setAdicionaVaga] = useState(0);
+
+  const handlePress = () => {
+      if (icon === "account-multiple-plus-outline") {
+          setIcon("account-multiple-check");
+          setBorderColor('green')
+          setTextEntrar("Sair")
+          setAdicionaVaga(adicionaVaga + 1)
+      } else {
+          setIcon("account-multiple-plus-outline");
+          setBorderColor('#ef3006')
+          setTextEntrar("Entrar")
+          setAdicionaVaga(adicionaVaga - 1)
+      }
+  };
+
+  
+
   return (
     <>
       <View style={styles.container}>
@@ -28,7 +50,7 @@ export default function Evento(props) {
             <Text style={styles.titulo}>{props.nome}</Text>
           </View>
           <View style={styles.ladoAlado}>
-            <Text style={styles.informacao}>{props.vagas}</Text>
+            <Text style={styles.informacao}>{adicionaVaga}/{props.vagas}</Text>
             <Text style={styles.informacao}>{props.dataEvento}</Text>
           </View>
           <View style={styles.ladoAlado}>
@@ -51,31 +73,20 @@ export default function Evento(props) {
             </Text>
           </View>
         </View>
-        <View style={styles.participacao}>
-          <TouchableOpacity>
+        {/* <View style={styles.participacao}> */}
+         <TouchableOpacity style={[styles.butao, { borderColor }]} onPress={handlePress}>
             <View
-              style={{
-                marginBottom: 0,
-                borderBottomWidth: 2,
-                borderRadius: 5,
-                borderColor: "#ef3006",
-              }}
             >
-              <Text style={styles.textoParticipar}>Participar</Text>
+              <Text style={styles.textoParticipar}>    {textEntrar}   </Text>
             </View>
-            <Ionicons
-              name="person"
-              size={35}
-              color="white"
-              style={styles.icone}
-            />
+            <MaterialCommunityIcons name={icon} size={35} color="white" />
           </TouchableOpacity>
           <View
             style={{
               position: "absolute",
               padding: 5,
-              right: 34,
-              top: 98,
+              right: 58,
+              top: 114,
               borderRightWidth: 2,
               borderBottomWidth: 2,
               borderColor: "#ef3006",
@@ -90,8 +101,8 @@ export default function Evento(props) {
             style={{
               position: "absolute",
               padding: 5,
-              right: -2,
-              top: 98,
+              right: 22,
+              top: 114,
               borderRightWidth: 2,
               borderBottomWidth: 2,
               borderColor: "#ef3006",
@@ -102,7 +113,7 @@ export default function Evento(props) {
               <Ionicons name="create" size={24} color="white" />
             </TouchableOpacity>
           </View>
-        </View>
+        {/* </View> */}
       </View>
 
       <View
@@ -231,5 +242,18 @@ const styles = StyleSheet.create({
     textShadowColor: "#EF3006",
     textShadowRadius: 4,
     fontSize: 13,
-  }
+  },
+  butao: {
+      borderWidth: 4,
+      width: 73,
+      height: 99.5,
+       borderWidth: 2,
+       justifyContent: 'center',
+       alignItems: 'center',
+       borderTopRightRadius: 10,
+       marginBottom: 140,
+},
+testedobotao:{
+  
+}
 });

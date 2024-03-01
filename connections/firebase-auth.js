@@ -54,9 +54,29 @@ const signOutFirebase = async () => {
     });
 }
 
+const deleteUserFromFirebase = async () => {
+    const user = getAuth(auth).currentUser;
+  
+    if (user) {
+      user.delete()
+        .then(() => {
+          // Usuário excluído com sucesso
+          nav.navigate("index");
+        })
+        .catch((error) => {
+          // Ocorreu um erro ao excluir o usuário
+          Alert.alert('Erro ao excluir usuário', error.message);
+        });
+    } else {
+      // Se o usuário não estiver autenticado
+      Alert.alert('Nenhum usuário autenticado');
+    }
+  };
+
 //EXPORTA O OBJETI DO APP (DESNECESSARIAMENTE, NA VERDADE), O DE AUTENTICACAO E AS TRES FUNCOES CRIADAS
 export { app, 
     auth, 
     emailLogin, //
     createUser, 
-    signOutFirebase }
+    signOutFirebase, 
+}

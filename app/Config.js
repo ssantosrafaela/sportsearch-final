@@ -6,12 +6,14 @@ import {
   Text,
   KeyboardAvoidingView,
   Touchable,
+  Alert,
 } from "react-native";
 import {
   Ionicons,
   Entypo,
   MaterialCommunityIcons,
   MaterialIcons,
+  AntDesign,
 } from "@expo/vector-icons";
 import { useNavigation } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
@@ -19,7 +21,7 @@ import Cima from "../components/Cima";
 import Baixo from "../components/Baixo";
 import { signOutFirebase } from "../connections/firebase-auth";
 import { useFonts } from "expo-font";
-
+import { deleteUserStore } from "../connections/firebase-store";
 
 export default function Config() {
 
@@ -27,6 +29,19 @@ export default function Config() {
   const trySignOut = async () => {
     signOutFirebase();
   }; 
+  const createTwoButtonAlert = () =>
+    Alert.alert('Deletar Conta', 'Clique "Sim" para deletar sua conta', [
+      {
+        text: 'Cancelar',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'Sim', onPress: () => console.log('OK Pressed')},
+    ]);
+
+    const TryDeleteUser = () =>{
+      deleteUserStore();
+    }
 
   const nav = useNavigation();
      const [fontsLoaded] = useFonts({
@@ -90,6 +105,26 @@ export default function Config() {
                     />
                   </View>
                 </TouchableOpacity>
+
+                <TouchableOpacity onPress = {()=>(TryDeleteUser())}>
+                  <View style={styles.linhas}>
+                    <AntDesign
+                      name="deleteuser"
+                      size={26}
+                      color="white"
+                      style={styles.botao}
+                    />
+                    <Text style={styles.insideTexto}> Deletar Conta</Text>
+                    <MaterialIcons
+                      name="arrow-forward-ios"
+                      size={26}
+                      color="white"
+                      style={styles.botao}
+                    />
+                  </View>
+                </TouchableOpacity>
+
+
               </View>
             </View>
 
@@ -248,11 +283,13 @@ export default function Config() {
                 onPress={() => {
                   // trySignOut();
                   // nav.navigate("index");
-                  nav.navigate("teste");
+                  nav.navigate("testedois");
                 }}
               >
                 <Text style={{ color: "#ef3006", fontSize:22 }}>Sair</Text>
               </TouchableOpacity>
+
+
             </View>
           </View>
         </ScrollView>

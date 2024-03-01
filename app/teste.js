@@ -1,175 +1,59 @@
-import React, { useState } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
-import { useNavigation } from "expo-router";
-import DateTimePicker from "@react-native-community/datetimepicker";
-import { signOutFirebase } from '../connections/firebase-auth';
-import { auth } from '../connections/firebase-auth';
-import { SafeAreaProvider, useSafeArea, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { Button, StyleSheet, TextInput, View } from 'react-native';
+import { useState, useEffect } from 'react';
+import * as Location from 'expo-location';
 
+export default function teste(){
+const [location, setLocation] = useState();
+const [address, setAddress] = useState();    
 
-// export default function Teste() {
-//     const nav = useNavigation();  
-//     const [mode, setMode] = useState("date");
-//     const [date, setDate] = useState(new Date()); 
-//     const [show, setShow] = useState(false);
+useEffect(() => {
+    const getPermissions = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        console.log("Please grant location permissions");
+        return;
+      }
 
-
-//     const onChange = (event, selectedDate) => {
-//         setDate(selectedDate);
-//         setShow(false);
-//       };
-//       const showMode = (modeToShow) => {
-//         setShow(true);
-//         setMode(modeToShow);
-//       };
-      
-
-//     function logout(){
-//     signOutFirebase(auth)  
-//     .then(()=>{
-//       alert('se fudeu')
-//       nav.navigate('index')
-//     })
-//     .catch((error) =>{
-//       const errorMessage = error.message;
-//       alert(errorMessage)
-//     })
-//     }
-
-//      return (
-// export default function Teste() {
-//     const nav = useNavigation();  
-//     const [mode, setMode] = useState("date");
-//     const [date, setDate] = useState(new Date()); 
-//     const [show, setShow] = useState(false);
-//     const [borderColor, setBorderColor] = useState("white");
-
-//     const onChange = (event, selectedDate) => {
-//         setDate(selectedDate);
-//         setShow(false);
-//     };
-
-//     const showMode = (modeToShow) => {
-//         setShow(true);
-//         setMode(modeToShow);
-//     };
-
-//     const handleButtonPress = () => {
-//         if (borderColor === "white") {
-//             setBorderColor("green");
-//         } else {
-//             setBorderColor("white");
-//         }
-//     };
-
-  
-export default function Teste() {
-    const nav = useNavigation();  
-    const [mode, setMode] = useState("date");
-    const [date, setDate] = useState(new Date()); 
-    const [show, setShow] = useState(false);
-    const [borderColor, setBorderColor] = useState("white");
-    const [icon, setIcon] = useState("exit");
-
-    const onChange = (event, selectedDate) => {
-        setDate(selectedDate);
-        setShow(false);
+      let currentLocation = await Location.getCurrentPositionAsync({});
+      setLocation(currentLocation);
+      console.log("Location:");
+      console.log(currentLocation);
     };
+    getPermissions();
+  }, []);
 
-    const showMode = (modeToShow) => {
-        setShow(true);
-        setMode(modeToShow);
-    };
+  const geocode = async () => {
+    const geocodedLocation = await Location.geocodeAsync(address);
+    console.log("Geocoded Address:");
+    console.log(geocodedLocation);
+  };
 
-    const handleButtonPress = () => {
-        if (icon === "exit") {
-            setIcon("enter");
-        } else {
-            setIcon("exit");
-        }
-    };
+  const reverseGeocode = async () => {
+    const reverseGeocodedAddress = await Location.reverseGeocodeAsync({
+      longitude: location.coords.longitude,
+      latitude: location.coords.latitude
+    });
 
-    function logout(){
-        signOutFirebase(auth)  
-        .then(()=>{
-            alert('se fudeu')
-            nav.navigate('index')
-        })
-        .catch((error) =>{
-            const errorMessage = error.message;
-            alert(errorMessage)
-        })
-    
+    console.log("Reverse Geocoded:");
+    console.log(reverseGeocodedAddress);
+  };
 
-    return (
-        <View style={[styles.container, { borderColor }]}>
-            <TouchableOpacity style={[styles.butao, { borderColor }]} onPress={handleButtonPress}>
-                <Text>{icon === "exit" ? "Click me" : "Enter"}</Text>
-            </TouchableOpacity>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <TextInput placeholder='Address' value={address} onChangeText={setAddress} />
+      <Button title="Geocode Address" onPress={geocode} />
+      <Button title="Reverse Geocode Current Location" onPress={reverseGeocode} />
+      <StatusBar style="auto" />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#1d2f4d',
-        borderWidth: 2,
-        borderColor: 'white'
-    },
-    butao:{
-        borderWidth: 3,
-        height: 50,
-    }
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
-
-    function logout(){
-        signOutFirebase(auth)  
-        .then(()=>{
-            alert('se fudeu')
-            nav.navigate('index')
-        })
-        .catch((error) =>{
-            const errorMessage = error.message;
-            alert(errorMessage)
-        })
-    }
-
-    return (
-        <View style={[styles.container, { borderColor }]}>
-            <TouchableOpacity style={[styles.butao, { borderColor }]} onPress={handleButtonPress}>
-                <Text>Click me</Text>
-            </TouchableOpacity>
-        </View>
-    );
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#1d2f4d',
-        borderWidth: 2,
-        borderColor: 'white'
-    },
-    butao:{
-      borderWidth: 3,
-      height: 50,
-    }
-})
-     
-//      )
-    
-//      }
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         backgroundColor: '#1d2f4d'
-//     }
-// })

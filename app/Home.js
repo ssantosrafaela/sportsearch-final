@@ -74,7 +74,11 @@ export default function Home() {
             }}
           >
       
-            <Swiper style={styles.wrapper} showsButtons={true} >
+            <Swiper
+             style={styles.wrapper}
+             showsButtons={true}
+             autoplay={true}
+             autoplayTimeout={5} >
               <View style={styles.slide}>
                 <Image
                   source={require("../assets/inclusao.png")}
