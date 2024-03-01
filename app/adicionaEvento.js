@@ -8,7 +8,7 @@ import {
   StatusBar,
 } from "react-native";
 import { useNavigation } from "expo-router";
-import { Ionicons, Feather, Entypo } from "@expo/vector-icons";
+import { Ionicons, Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
 import { KeyboardAvoidingView } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
@@ -93,6 +93,20 @@ export default function adicionaEvento() {
               value={vagas}
             />
 
+              <TouchableOpacity onPress={() => nav.navigate("testedois")} style={{ marginTop: 28, marginBottom: -10, borderBottomColor: '#ef3006', borderBottomWidth: 1, width: 235}}>
+            <View style={{flexDirection: 'row',     justifyContent: "space-between",}}>
+                <Text style={{color: 'white', alignItems: 'flex-start'}}>Selecione o local do evento</Text>
+                <MaterialIcons
+                      name="arrow-forward-ios"
+                      size={19}
+                      color="white"
+                      style={styles.botao}  
+                    /> 
+            </View>
+              </TouchableOpacity>
+
+            {/* 
+            
             <TextInput
               style={styles.input}
               onChangeText={(text) => setLocal(text)}
@@ -100,8 +114,8 @@ export default function adicionaEvento() {
               placeholderTextColor={"#fff"}
               value={local}
             />
-
-            {/* <TextInput 
+            
+            <TextInput 
     style={styles.input}
     onChangeText={(text) => setHorario(text)}
     placeholder="Horário"
@@ -286,5 +300,10 @@ const styles = StyleSheet.create({
   txtBotaoAdc: {
     color: "#ef3006",
     fontSize: 17,
+  },
+  botao: {
+    textShadowColor: "#EF3006",
+    textShadowRadius: 4,
+    marginBottom: 3
   },
 });
