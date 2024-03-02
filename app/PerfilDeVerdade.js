@@ -121,7 +121,7 @@ export default function PerfilDeVerdade(props) {
                 <View
                   style={{ flexDirection: "row", justifyContent: "center" }}
                 >
-                  <Text style={styles.nome}>{textProfile.name}</Text> 
+                  <Text style={styles.nome}>{textProfile.name} {textProfile.lastName}</Text> 
                   <Text
                     style={{
                       alignSelf: "center",
@@ -142,7 +142,7 @@ export default function PerfilDeVerdade(props) {
                   style={{ textShadowColor: "#EF3006", textShadowRadius: 4 }}
                 />
                 <Text style={styles.localizacao}>
-                  CIDADE, Estado
+                  {textProfile.city}, {textProfile.state}
                 </Text>
               </View>
 

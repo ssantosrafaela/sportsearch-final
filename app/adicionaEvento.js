@@ -289,15 +289,15 @@ export default function adicionaEvento() {
               value={nome}
             />
 
-            {/* <TextInput
+            <TextInput
               style={styles.input}
               onChangeText={(text) => setVagas(text)}
               placeholder="Vagas"
               placeholderTextColor={"#fff"}
               value={vagas}
-            /> */}
+            />
 
-<SelectList
+{/* <SelectList
                   value={numeros}
                   setSelected={(e) => setNumeros(e)}
                   data={numeros}
@@ -323,8 +323,8 @@ export default function adicionaEvento() {
                     color: "#fff",
                   }}
                   inputStyles={{ color: "white" }}
-                />
-
+                /> */}
+{/* 
               <TouchableOpacity onPress={() => nav.navigate("testedois")} style={{ marginTop: 28, marginBottom: -10, borderBottomColor: '#ef3006', borderBottomWidth: 1, width: 235}}>
             <View style={{flexDirection: 'row',     justifyContent: "space-between",}}>
                 <Text style={{color: 'white', alignItems: 'flex-start'}}>Selecione o local do evento</Text>
@@ -335,9 +335,9 @@ export default function adicionaEvento() {
                       style={styles.botao}  
                     /> 
             </View>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
 
-            {/* 
+           
             
             <TextInput
               style={styles.input}
@@ -346,7 +346,7 @@ export default function adicionaEvento() {
               placeholderTextColor={"#fff"}
               value={local}
             />
-            
+         {/*     
             <TextInput 
     style={styles.input}
     onChangeText={(text) => setHorario(text)}

@@ -11,7 +11,7 @@ import { Ionicons } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Checkbox from "expo-checkbox";
 
-import { emailLogin, auth, createUser, signOutFirebase } from "../connections/firebase-auth";
+import { emailLogin, auth, createUser } from "../connections/firebase-auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { addUserFirestore } from '../connections/firebase-store'
 
@@ -47,7 +47,7 @@ const [textPronome, setPronome] = useState("");
 
     const userCredential = await createUser(textEmail, textPassword);
     if (userCredential){
-     addUserFirestore(userCredential.user.uid, textNome, textEmail, textSobrenome, textTelefone );
+     addUserFirestore(userCredential.user.uid, textNome,  textSobrenome, textTelefone, textCidade, textEstado, textGenre, textSexualidade, textPronome, textEmail);
       //await AsyncStorage.setItem('user', userCredential.user.uid);
       nav.navigate('Login');
     }else{
@@ -68,17 +68,28 @@ const [textPronome, setPronome] = useState("");
     setMode(modeToShow);
   };
 
-  const [gnr, setGnr] = useState([
-    { label: "Mulher Cis", value: "Mulher Cis" },
+  // const [gnr, setGnr] = useState([
+  //   { label: "Mulher Cis", value: "Mulher Cis" },
+  //   { label: "Mulher Trans", value: "Mulher Trans"},
+  //   { label: "Homem Cis", value: "Homem Cis" },
+  //   { label: "Homem Trans", value: "Homem Trans"},
+  //   { label: "Não-binário", value: "Não-binário" },
+  //   { label: "Prefiro não informar", value: "Prefiro não informar" },
+  //   { label: "Outro", value: "Outro" }, 
+  // ]);
+
+const [textGenre, setGenre] = useState("");
+const gnr = [
+  { label: "Mulher Cis", value: "Mulher Cis" },
     { label: "Mulher Trans", value: "Mulher Trans"},
     { label: "Homem Cis", value: "Homem Cis" },
     { label: "Homem Trans", value: "Homem Trans"},
     { label: "Não-binário", value: "Não-binário" },
     { label: "Prefiro não informar", value: "Prefiro não informar" },
-    { label: "Outro", value: "Outro" }, 
-  ]);
+]
 
-  const [ sexualidade, setSexualidade] = useState([
+const [textSexualidade, setSexualidade] = useState("");
+const sexuality =[
     { label: "Heterossexual", value: "Heterossexual" },
     { label: "Homossexual", value: "Homossexual"},
     {label: "Lésbica", value: "Lésbica"},
@@ -88,10 +99,9 @@ const [textPronome, setPronome] = useState("");
     { label: "Assexual", value: "Assexual" },
     { label: "Demissexual", value: "Demissexual" }, 
     { label: "Prefiro não informar", value: "Prefiro não informar" },
-  
-  ]);
+  ];
 
-  const [selected, setSelected] = useState("");
+  const [textEstado, setEstado] = useState("");
   const data = [
     { label: "Acre", value: "Acre" },
     { label: "Alagoas", value: "Alagoas" },
@@ -204,7 +214,7 @@ const [textPronome, setPronome] = useState("");
                    <View style={{marginBottom: 17}}> 
                   <SelectList
                       value={data}
-                      setSelected={(j) => setSelected(j)}
+                      setSelected={(j) => setEstado(j)}
                       data={data}
                       save="key"
                       placeholder="Selecione seu estado:"
@@ -230,7 +240,7 @@ const [textPronome, setPronome] = useState("");
 
                     <SelectList
                       value={gnr}
-                      setSelected={(e) => setGnr(e)}
+                      setSelected={(e) => setGenre(e)}
                       data={gnr}
                       save="key"
                       placeholder="Selecione sua identidade de gênero:"
@@ -254,9 +264,9 @@ const [textPronome, setPronome] = useState("");
                     />
                 
                   <SelectList
-                  value={sexualidade}
+                  value={sexuality}
                   setSelected={(e) => setSexualidade(e)}
-                  data={sexualidade}
+                  data={sexuality}
                   save="key"
                   placeholder="Selecione sua sexualidade:"
                   placeholderTextColor={"#fff"}

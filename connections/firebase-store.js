@@ -17,17 +17,28 @@ const db = getFirestore(app);
 const addUserFirestore = async (
   userCredential,
   name,
-  email,
-  lasName,
+  lastName,
   phone,
+  city,
+  state,
+  genre,
+  sexuality,
+  pronome,
+  email,
 ) => {
   const uid = auth.currentUser.uid;
   const data = {
     uid: uid,
     name: name,
-    lastName: lasName,
+    lastName: lastName,
     phone: phone,
+    city: city,
+    state: state,
+    genre: genre,
+    sexuality: sexuality,
+    pronome: pronome,
     email: email,
+
   };
   return await setDoc(doc(db, "users", uid), data);
 };
@@ -41,9 +52,9 @@ const addEventFirestore = async (
   horario,
   dataEvento,
   vagas,
-  atualPessoas,
-  valor,
-  observacoes,
+//  atualPessoas,
+//  valor,
+//  observacoes,
 ) => {
   const uid = auth.currentUser.uid;
   const data = {
@@ -55,9 +66,9 @@ const addEventFirestore = async (
     dataEvento: dataEvento,
     horario: horario,
     vagas: vagas,
-    atualPessoas: atualPessoas,
-    valor: valor,
-    observacoes: observacoes,
+   // atualPessoas: atualPessoas,
+  //  valor: valor,
+  //  observacoes: observacoes,
   };
   return await addDoc(collection(db, "eventos"), data);
 };

@@ -15,6 +15,17 @@
       "expo-router"
     ],
     "name": "sport-search-final",
-    "slug": "sport-search-final"
+    "slug": "sport-search-final",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "6a01e08d-c190-4805-9521-4c5b0573bdf3"
+      }
+    },
+    "android": {
+      "package": "com.ssantosrafaela.sportsearchfinal"
+    }
   }
 }
