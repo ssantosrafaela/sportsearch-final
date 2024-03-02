@@ -129,7 +129,7 @@ export default function PerfilDeVerdade(props) {
                       color: "white",
                     }}
                   >
-                    Ele/dele
+                    {textProfile.pronome}
                   </Text>
                 </View>
               </View>
