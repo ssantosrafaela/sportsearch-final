@@ -78,10 +78,10 @@ export default function PerfilDeVerdade(props) {
                   style={styles.iconImg}
                 />
 
-                <View style={{ position: "absolute", left: 210, top: 40 }}>
+                <View style={{ position: "absolute", left: 250, top: 40 }}>
                   <View
                     style={{
-                      flexDirection: "row",
+                      
                       backgroundColor: "#273854",
                       borderRadius: 5,
                       padding: 5,
@@ -97,22 +97,8 @@ export default function PerfilDeVerdade(props) {
                           textShadowRadius: 4,
                         }}
                       >
-                        {" "}
-                        0 amigos
-                      </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                      <Text
-                        style={{
-                          marginRight: 4,
-                          fontSize: 16,
-                          color: "white",
-                          textShadowColor: "#EF3006",
-                          textShadowRadius: 4,
-                        }}
-                      >
-                        {" "}
-                        0 seguidores
+                        
+                       {textProfile.genre}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -179,16 +165,6 @@ export default function PerfilDeVerdade(props) {
               </TouchableOpacity>
             </View>
 
-            {/* COLOCAR DUAS VIES UMA DO LADO DA OUTRA SE NAO A ESTILIZAÇÃO VAI FICAR ERRADA
-
-AMANHA FINALIZAR O PERFIL E TERMINAR DE ESTILIZAR A HOME
-
-TERMINAR A CONCLUSAO
-
-TERMINAR METODOLOGIA
-
-COLOCAR RESULTADOS
- */}
             <View>
               {/* <View style={{borderTopWidth: 1,padding: 5, borderColor: "#ef3006",  justifyContent:'center'}}>
 

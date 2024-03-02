@@ -27,8 +27,9 @@ export default function EditProfile(){
           behavior={Platform.OS == "ios" ? "padding" : "height"}
           style={styles.containerScrollView}
         >
-          <Cima />
+         
           <ScrollView style={styles.ScrollViewStyle}>
+
             <View style={styles.cima}>
               <View style={{ width: "100%" }}>
                 <Image
@@ -40,136 +41,23 @@ export default function EditProfile(){
 
               <View>
                 <Image
-                  source={require("../assets/billie.png")} //billie.png funciona e fica bom
+                  source={require("../assets/billie.png")}
                   resizeMode="cover"
                   style={styles.iconImg}
                 />
 
-                <View style={{ position: "absolute", left: 210, top: 40 }}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      backgroundColor: "#273854",
-                      borderRadius: 5,
-                      padding: 5,
-                    }}
-                  >
-                    <TouchableOpacity>
-                      <Text
-                        style={{
-                          marginRight: 4,
-                          fontSize: 16,
-                          color: "white",
-                          textShadowColor: "#EF3006",
-                          textShadowRadius: 4,
-                        }}
-                      >
-                        {" "}
-                        0 amigos
-                      </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                      <Text
-                        style={{
-                          marginRight: 4,
-                          fontSize: 16,
-                          color: "white",
-                          textShadowColor: "#EF3006",
-                          textShadowRadius: 4,
-                        }}
-                      >
-                        {" "}
-                        0 seguidores
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
+               
                 </View>
 
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
-                  <Text style={styles.nome}>tanta</Text> 
-                  <Text
-                    style={{
-                      alignSelf: "center",
-                      marginLeft: 5,
-                      color: "white",
-                    }}
-                  >
-                    Ele/dele
-                  </Text>
-                </View>
+               
               </View>
 
-              <View style={styles.localizaaipapaizinho}>
-                <MaterialIcons
-                  name="location-on"
-                  size={24}
-                  color="white"
-                  style={{ textShadowColor: "#EF3006", textShadowRadius: 4 }}
-                />
-                <Text style={styles.localizacao}>
-                  CIDADE, Estado
-                </Text>
-              </View>
-
-              <View style={{ alignItems: "center" }}>
-                <View style={styles.bio}>
-                  <Text
-                    style={{
-                      fontSize: 15,
-                      color: "white",
-                      textShadowColor: "#EF3006",
-                      textShadowRadius: 4,
-                    }}
-                  >
-                    Biografia do usuário.
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View style={{ position: "absolute", left: 270, top: 167 }}>
-              <TouchableOpacity
-                style={{
-                  padding: 10,
-                  backgroundColor: "white",
-                  width: 100,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderWidth: 1,
-                  borderColor: "#ef3006",
-                  borderRadius: 10,
-                }}
-                onPress={() => nav.navigate("editProfile")}
-              >
-                <Text style={{ color: "#ef3006" }}>Editar Perfil</Text>
-              </TouchableOpacity>
-            </View>
-
-            {/* COLOCAR DUAS VIES UMA DO LADO DA OUTRA SE NAO A ESTILIZAÇÃO VAI FICAR ERRADA
-
-AMANHA FINALIZAR O PERFIL E TERMINAR DE ESTILIZAR A HOME
-
-TERMINAR A CONCLUSAO
-
-TERMINAR METODOLOGIA
-
-COLOCAR RESULTADOS
- */}
-            <View>
-              {/* <View style={{borderTopWidth: 1,padding: 5, borderColor: "#ef3006",  justifyContent:'center'}}>
-
-      <TouchableOpacity>
-        <Text style={{textShadowColor: "#EF3006",
-    textShadowRadius: 4, color: 'white', fontSize: 19, marginLeft: 35}}>
-          Eventos Participados
-        </Text>
-      </TouchableOpacity>
-    </View> */}
-            </View>
-          </ScrollView>
-          <Adiciona />
-          <Baixo />
+             
+          
+           
+            
+           </ScrollView>
+        
         </KeyboardAvoidingView>
       </>
     );
