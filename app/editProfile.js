@@ -57,7 +57,7 @@ const [observacoes, setObservacoes] = useState("");
   return (
           <ScrollView style={styles.ScrollViewStyle}>
          <TouchableOpacity
-            onPress={() => nav.navigate("PerfilDeVerdade")}
+            onPress={() => nav.navigate("puxaimg")}
             style={{marginTop: 18,}}
           >
             <Ionicons name="arrow-back" color="#fff" size={30} />

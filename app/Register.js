@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, Linking } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  StyleSheet,
+  Linking,
+} from "react-native";
 import { useNavigation } from "expo-router";
 import { useFonts } from "expo-font";
 import Entrada from "../components/Entrada";
@@ -13,9 +20,7 @@ import Checkbox from "expo-checkbox";
 
 import { emailLogin, auth, createUser } from "../connections/firebase-auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { addUserFirestore } from '../connections/firebase-store'
-
-
+import { addUserFirestore } from "../connections/firebase-store";
 
 export default function Register() {
   const nav = useNavigation();
@@ -27,7 +32,7 @@ export default function Register() {
   const [textNome, setNome] = useState("");
   const [textSobrenome, setSobrenome] = useState("");
   const [textCidade, setCidade] = useState("");
-const [textPronome, setPronome] = useState("");
+  const [textPronome, setPronome] = useState("");
   const [textTelefone, setTelefone] = useState("");
   const [textEmail, setEmail] = useState("");
   const [textPassword, setPassword] = useState("");
@@ -35,25 +40,34 @@ const [textPronome, setPronome] = useState("");
   const [hidePass, setHidePass] = useState(true);
   const [hideCPass, setHideCPass] = useState(true);
 
-  
-  
   const [isChecked, setIsChecked] = useState(false);
 
   const tryCreateUser = async () => {
     if (textPassword != textConfPassword) {
-      alert("senha tao diferente sem nocaaaaaaaaaaao");
+      alert("Senhas diferentes.");
       return;
     }
 
     const userCredential = await createUser(textEmail, textPassword);
-    if (userCredential){
-     addUserFirestore(userCredential.user.uid, textNome,  textSobrenome, textTelefone, textCidade, textEstado, textGenre, textSexualidade, textPronome, textEmail);
+    if (userCredential) {
+      addUserFirestore(
+        userCredential.user.uid,
+        textNome,
+        textSobrenome,
+        textTelefone,
+        textCidade,
+        textEstado,
+        textGenre,
+        textSexualidade,
+        textPronome,
+        textEmail
+      );
       //await AsyncStorage.setItem('user', userCredential.user.uid);
-      nav.navigate('Login');
-    }else{
-      alert('Deu errado hahahahahaha');
+      nav.navigate("Login");
+    } else {
+      alert("Insira todos os dados pedidos.");
     }
-  } 
+  };
 
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
@@ -68,36 +82,26 @@ const [textPronome, setPronome] = useState("");
     setMode(modeToShow);
   };
 
-  // const [gnr, setGnr] = useState([
-  //   { label: "Mulher Cis", value: "Mulher Cis" },
-  //   { label: "Mulher Trans", value: "Mulher Trans"},
-  //   { label: "Homem Cis", value: "Homem Cis" },
-  //   { label: "Homem Trans", value: "Homem Trans"},
-  //   { label: "Não-binário", value: "Não-binário" },
-  //   { label: "Prefiro não informar", value: "Prefiro não informar" },
-  //   { label: "Outro", value: "Outro" }, 
-  // ]);
-
-const [textGenre, setGenre] = useState("");
-const gnr = [
-  { label: "Mulher cis", value: "Mulher cis" },
-    { label: "Mulher trans", value: "Mulher trans"},
+  const [textGenre, setGenre] = useState("");
+  const gnr = [
+    { label: "Mulher cis", value: "Mulher cis" },
+    { label: "Mulher trans", value: "Mulher trans" },
     { label: "Homem cis", value: "Homem cis" },
-    { label: "Homem trans", value: "Homem trans"},
+    { label: "Homem trans", value: "Homem trans" },
     { label: "Não-binário", value: "Não-binário" },
     { label: "Prefiro não informar", value: "Prefiro não informar" },
-]
+  ];
 
-const [textSexualidade, setSexualidade] = useState("");
-const sexuality =[
+  const [textSexualidade, setSexualidade] = useState("");
+  const sexuality = [
     { label: "Heterossexual", value: "Heterossexual" },
-    { label: "Homossexual", value: "Homossexual"},
-    {label: "Lésbica", value: "Lésbica"},
-    { label: "Gay", value: "Gay"},
+    { label: "Homossexual", value: "Homossexual" },
+    { label: "Lésbica", value: "Lésbica" },
+    { label: "Gay", value: "Gay" },
     { label: "Bissexual", value: "Bissexual" },
-    { label: "Pansexual", value: "Pansexual"},
+    { label: "Pansexual", value: "Pansexual" },
     { label: "Assexual", value: "Assexual" },
-    { label: "Demissexual", value: "Demissexual" }, 
+    { label: "Demissexual", value: "Demissexual" },
     { label: "Prefiro não informar", value: "Prefiro não informar" },
   ];
 
@@ -141,10 +145,12 @@ const sexuality =[
         >
           <SafeAreaView style={styles.teste}>
             <ScrollView>
-              <View style={styles.topBack}
-              accessible={true}
-              accessibilityLabel="Botão de voltar."
-              accessibilityHint="Clique para voltar para a tela inicial.">
+              <View
+                style={styles.topBack}
+                accessible={true}
+                accessibilityLabel="Botão de voltar."
+                accessibilityHint="Clique para voltar para a tela inicial."
+              >
                 <TouchableOpacity
                   onPress={() => nav.navigate("index")}
                   style={styles.back}
@@ -153,10 +159,12 @@ const sexuality =[
                 </TouchableOpacity>
               </View>
 
-              <View style={styles.cima}
-              accessible={true}
-              accessibilityLabel="SportSearch."
-              accessibilityHint="Insira seus dados nos campos de texto para se cadastrar no aplicativo.">
+              <View
+                style={styles.cima}
+                accessible={true}
+                accessibilityLabel="SportSearch."
+                accessibilityHint="Insira seus dados nos campos de texto para se cadastrar no aplicativo."
+              >
                 <Text style={styles.titulo}>Sport Search</Text>
                 <Text style={styles.subtitulo}>
                   Insira seus dados para se cadastrar
@@ -165,10 +173,11 @@ const sexuality =[
 
               <View style={styles.meio}>
                 <View
-                style = {styles.viewDados}
-                accessible={true}
-            accessibilityLabel="Dados pessoais"
-            accessibilityHint="Aqueles que aparecerão no seu perfil pessoal.">
+                  style={styles.viewDados}
+                  accessible={true}
+                  accessibilityLabel="Dados pessoais"
+                  accessibilityHint="Aqueles que aparecerão no seu perfil pessoal."
+                >
                   <Text style={styles.dados}>Dados Pessoais:</Text>
                 </View>
 
@@ -178,7 +187,6 @@ const sexuality =[
                     label="Digite seu nome"
                     setValue={setNome}
                     value={textNome}
-                
                   />
 
                   <Entrada
@@ -195,57 +203,39 @@ const sexuality =[
                     value={textTelefone}
                   />
 
-                  <Entrada 
-                  text={"Cidade"}
-                  label={"Insira sua cidade "}
-                  setValue={setCidade}  
-                  value={textCidade}
+                  <Entrada
+                    text={"Cidade"}
+                    label={"Insira sua cidade "}
+                    setValue={setCidade}
+                    value={textCidade}
                   />
 
-                  {/* <View style={styles.inputArea}>
-                    <TouchableOpacity
-                      onPress={() => showMode("date")}
-                      style={styles.input}
-                    >
-                      <Text style={styles.text}>
-                        Data de nascimento{" "}
-                      </Text>
-                      <DateTimePicker
-                        value={date}
-                        mode={mode}
-                        is24Hour={true}
-                        display="default"
-                        onChange={onChange}
-                      />
-                    </TouchableOpacity>
-                  </View> */}
-
                   <View style={styles.select}>
-                   <View style={{marginBottom: 17}}> 
-                  <SelectList
-                      value={data}
-                      setSelected={(j) => setEstado(j)}
-                      data={data}
-                      save="key"
-                      placeholder="Selecione seu estado:"
-                      placeholderTextColor={"#fff"}
-                      dropdownStyles={{
-                        width: 270,
-                        backgroundColor: "#273854",
-                        borderColor: "#EF3006",
-                        marginBottom: 20,
-                        color: "#fff",
-                      }}
-                      boxStyles={{
-                        width: 270,
-                        height: 40,
-                        borderColor: "#EF3006",
-                        color: "#fff",
-                      }}
-                      inputStyles={{
-                        color: "white",
-                      }}
-                    />
+                    <View style={{ marginBottom: 17 }}>
+                      <SelectList
+                        value={data}
+                        setSelected={(j) => setEstado(j)}
+                        data={data}
+                        save="key"
+                        placeholder="Selecione seu estado:"
+                        placeholderTextColor={"#fff"}
+                        dropdownStyles={{
+                          width: 270,
+                          backgroundColor: "#273854",
+                          borderColor: "#EF3006",
+                          marginBottom: 20,
+                          color: "#fff",
+                        }}
+                        boxStyles={{
+                          width: 270,
+                          height: 40,
+                          borderColor: "#EF3006",
+                          color: "#fff",
+                        }}
+                        inputStyles={{
+                          color: "white",
+                        }}
+                      />
                     </View>
 
                     <SelectList
@@ -257,7 +247,6 @@ const sexuality =[
                       placeholderTextColor={"#fff"}
                       dropdownStyles={{
                         width: 270,
-                        //  height: 40,
                         backgroundColor: "#273854",
                         color: "#fff",
                         borderColor: "#EF3006",
@@ -271,59 +260,56 @@ const sexuality =[
                       }}
                       inputStyles={{ color: "white" }}
                       accessible={true}
-            accessibilityLabel="Selecione sua identidade de gênero."
-            accessibilityHint="Botão para selecionar sua identidade de gênero."
-                      
+                      accessibilityLabel="Selecione sua identidade de gênero."
+                      accessibilityHint="Botão para selecionar sua identidade de gênero."
                     />
-                
-                  <SelectList
-                  value={sexuality}
-                  setSelected={(e) => setSexualidade(e)}
-                  data={sexuality}
-                  save="key"
-                  placeholder="Selecione sua sexualidade:"
-                  placeholderTextColor={"#fff"}
-                  dropdownItemStyles={{ color: "#fff" }}
-                  item
-                  dropdownStyles={{
-                    width: 270,
-                    //  height: 40,
-                    backgroundColor: "#273854",
-                    borderColor: "#EF3006",
-                    marginBottom: 20,
-                    color: "#fff",
-                    
-                  }}
-                  boxStyles={{
-                    width: 270,
-                    height: 45,
-                    borderColor: "#EF3006",
-                    marginBottom: 20,
-                    color: "#fff",
-                  }}
-                  inputStyles={{ color: "white" }}
-                />
-                <View style={{marginTop: -13}}>
-                 <Entrada 
-                  text={"Pronome"}
-                  label={"Insira seu pronome (Ele/dele) "}
-                  setValue={setPronome}  
-                  value={textPronome}
-                  />
-</View>
-                    
+
+                    <SelectList
+                      value={sexuality}
+                      setSelected={(e) => setSexualidade(e)}
+                      data={sexuality}
+                      save="key"
+                      placeholder="Selecione sua sexualidade:"
+                      placeholderTextColor={"#fff"}
+                      dropdownItemStyles={{ color: "#fff" }}
+                      item
+                      dropdownStyles={{
+                        width: 270,
+                        //  height: 40,
+                        backgroundColor: "#273854",
+                        borderColor: "#EF3006",
+                        marginBottom: 20,
+                        color: "#fff",
+                      }}
+                      boxStyles={{
+                        width: 270,
+                        height: 45,
+                        borderColor: "#EF3006",
+                        marginBottom: 20,
+                        color: "#fff",
+                      }}
+                      inputStyles={{ color: "white" }}
+                    />
+                    <View style={{ marginTop: -13 }}>
+                      <Entrada
+                        text={"Pronome"}
+                        label={"Insira seu pronome (Ele/dele) "}
+                        setValue={setPronome}
+                        value={textPronome}
+                      />
+                    </View>
                   </View>
 
                   <View style={styles.meio}>
-                    <View style = {styles.viewDados}>
-                      
-                        <Text style={styles.dados}
+                    <View style={styles.viewDados}>
+                      <Text
+                        style={styles.dados}
                         accessible={true}
                         accessibilityLabel="Dados de entrada"
-                        accessibilityHint="Aqueles que serão utilizados para entrar no aplicativo.">
-                          Dados de Entrada:
-                        </Text>
-                      
+                        accessibilityHint="Aqueles que serão utilizados para entrar no aplicativo."
+                      >
+                        Dados de Entrada:
+                      </Text>
                     </View>
                   </View>
 
@@ -365,7 +351,6 @@ const sexuality =[
                         value={textConfPassword}
                         onChangeText={(e) => setConfPassword(e)}
                         secureTextEntry={hideCPass}
-
                       />
                       <TouchableOpacity
                         style={styles.icon}
@@ -377,34 +362,35 @@ const sexuality =[
                           <Ionicons name="eye-off" color="#fff" size={25} />
                         )}
                       </TouchableOpacity>
-
                     </View>
-
                   </View>
                 </View>
               </View>
-              <View style={styles.check}>  
-                      <Checkbox
-                        value={isChecked}
-                        onValueChange={setIsChecked}
-                        color="#EF3006"
-                        style={styles.checkboxContainer}
-                      />
-                      <Text
-                      style={styles.textCheck}
-                     >Aceitar os termos de uso</Text>
-                      </View>
+              <View style={styles.check}>
+                <Checkbox
+                  value={isChecked}
+                  onValueChange={setIsChecked}
+                  color="#EF3006"
+                  style={styles.checkboxContainer}
+                />
+                <Text style={styles.textCheck}>Aceitar os termos de uso</Text>
+              </View>
 
               <View style={styles.next}>
                 <TouchableOpacity
                   style={styles.botaoEntrar}
-                  onPress={() => {tryCreateUser()}
-                  }
+                  onPress={() => {
+                    tryCreateUser();
+                  }}
                 >
-                  <Text style={styles.textoBotaoEntrar}
-                  accessible={true}
-                  accessibilityLabel="Botão de cadastrar."
-                  accessibilityHint="Ao clicar aqui, se seus dados estiverem preenchidos, você será redirecionado a tela de entrar.">Cadastrar</Text>
+                  <Text
+                    style={styles.textoBotaoEntrar}
+                    accessible={true}
+                    accessibilityLabel="Botão de cadastrar."
+                    accessibilityHint="Ao clicar aqui, se seus dados estiverem preenchidos, você será redirecionado a tela de entrar."
+                  >
+                    Cadastrar
+                  </Text>
                 </TouchableOpacity>
               </View>
             </ScrollView>
@@ -570,28 +556,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  check:{
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+  check: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 40,
     marginBottom: 10,
   },
-  textCheck:{
-    color: '#fff',
+  textCheck: {
+    color: "#fff",
     fontSize: 17,
     fontFamily: "Archivo_Condensed-SemiBoldItalic.ttf",
     textShadowColor: "#EF3006",
     textShadowRadius: 4,
-    },
-    checkboxContainer: {
-      borderRadius: 5,
-      borderWidth: 1,
-      marginRight: 5,
-    },
-    viewDados:{
-      justifyContent: 'center',
-      paddingRight: 154,
-      marginTop: 10,
-    }
-  });
+  },
+  checkboxContainer: {
+    borderRadius: 5,
+    borderWidth: 1,
+    marginRight: 5,
+  },
+  viewDados: {
+    justifyContent: "center",
+    paddingRight: 154,
+    marginTop: 10,
+  },
+});

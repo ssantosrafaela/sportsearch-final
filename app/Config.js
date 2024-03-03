@@ -33,14 +33,29 @@ export default function Config() {
     Alert.alert('Deletar Conta', 'Clique "Sim" para deletar sua conta', [
       {
         text: 'Cancelar',
-        onPress: () => console.log('Cancel Pressed'),
+        onPress: () =>{ 
+          console.log('Cancel Pressed')
+        },
         style: 'cancel',
       },
-      {text: 'Sim', onPress: () => console.log('OK Pressed')},
+      {text: 'Sim', onPress: () => TryDeleteUser()},
+    ]);
+
+    const buttonAlert = () =>
+    Alert.alert('Opssss','Ainda estamos em construção!', [
+      {
+        text: 'Cancelar',
+        onPress: () =>{ 
+          console.log('Cancel Pressed')
+        },
+        style: 'cancel',
+      },
+      {text: 'Ok', onPress: () => console.log('Ok Pressed')},
     ]);
 
     const TryDeleteUser = () =>{
-      deleteUserStore();
+      deleteUserFirestore();
+      nav.navigate("index");
     }
 
   const nav = useNavigation();
@@ -88,7 +103,7 @@ export default function Config() {
                   </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress = {() => (buttonAlert())}>
                   <View style={styles.linhas}>
                     <Ionicons
                       name="person-add"
@@ -106,7 +121,7 @@ export default function Config() {
                   </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress = {()=>(deleteUserFirestore())}>
+                <TouchableOpacity onPress = {()=>(createTwoButtonAlert())}>
                   <View style={styles.linhas}>
                     <AntDesign
                       name="deleteuser"
@@ -132,7 +147,7 @@ export default function Config() {
               <Text style={styles.texticulo}>Preferência</Text>
 
               <View style={styles.semitituto}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress = {() => (buttonAlert())}>
                   <View style={styles.linhas}>
                     <Ionicons
                       name="lock-closed"
@@ -188,7 +203,7 @@ export default function Config() {
                     />
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress = {() => (buttonAlert())}>
                   <View style={styles.linhas}>
                     <Ionicons
                       name="mail-open"
@@ -205,7 +220,7 @@ export default function Config() {
                     />
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => nav.navigate("Acessibilidade")}>
                   <View style={styles.linhas}>
                     <MaterialIcons
                       name="accessibility"
