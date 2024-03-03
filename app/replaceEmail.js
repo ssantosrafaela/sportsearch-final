@@ -58,13 +58,16 @@ export default function ReplaceEmail() {
       accessible={true}
       accessibilityLabel="Redefina sua senha"
       accessibilityHint="Insira um email válido e logo após confira sua caixa de entrada.">
-        <Text style={styles.formTitle}>Redefinição de Senha</Text>
+        <Text style={styles.formTitle}>Redefinição de Email</Text>
         <Text style={styles.subtitulo}>
-          Insira seu email e confira a caixa de entrada!
+          Insira seu novo email e confirme-o.
         </Text>
       </View>
+      </View>
+      <View style={{backgroundColor: "#1d2f4d", flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom:170}}>
       <TextInput
         placeholder="Digite seu novo email"
+        placeholderTextColor={"#fff"}
         keyboardType="email-address"
         autoCapitalize="none"
         autoComplete="email"
@@ -74,6 +77,7 @@ export default function ReplaceEmail() {
       />
       <TextInput
         placeholder="Confirme o novo email"
+        placeholderTextColor={"#fff"}
         keyboardType="email-address"
         autoCapitalize="none"
         autoComplete="email"
@@ -81,18 +85,10 @@ export default function ReplaceEmail() {
         onChangeText={setCNewEmail}
         style={styles.caixatexto}
       />
-      <TouchableOpacity style={{
-        backgroundColor: '#fff',
-        borderColor: '#ef3006',
-        padding: 10,
-        borderRadius: 10,
-        width: 100,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}onPress={() => updateEmailFunction()}>
-        <Text style={{color: '#1d2f4d'}}>Confirmar</Text>
+      <TouchableOpacity style={styles.sendButton} onPress={() => updateEmailFunction()}>
+        <Text style={styles.sendButtonText}>Confirmar</Text>
       </TouchableOpacity>
-    </View>
+      </View>
     </>
   );
 }
@@ -108,8 +104,8 @@ const styles = StyleSheet.create({
     },
     caixatexto: {
         borderColor: '#ef3006',
-        width: 200,
-        height: 40,
+        width: 300,
+        height: 50,
         margin: 12,
         borderWidth: 1,
         padding: 10,
@@ -121,4 +117,50 @@ const styles = StyleSheet.create({
         backgroundColor: "#1D2F4D",
         paddingTop: 50,
     },
+    formInput: {
+        borderWidth: 1,
+        borderColor: "#EF3006",
+        width: 300,
+        height: 50,
+        borderRadius: 10,
+        color: "#fff",
+        paddingLeft: 10,
+        marginBottom: 10,
+      },
+      formTitle: {
+        color: "#fff",
+        fontSize: 55,
+        fontFamily: "Archivo_ExtraCondensed-BlackItalic.ttf",
+        textShadowColor: "#EF3006",
+        textShadowOffset: { width: 4, height: 3 },
+        textShadowRadius: 4,
+        marginBottom: 10,
+      },
+      subtitulo: {
+        fontSize: 20,
+        color: "white",
+        fontFamily: "Archivo_Condensed-SemiBoldItalic.ttf",
+        textShadowColor: "#EF3006",
+        textShadowRadius: 4,
+        marginTop: 10,
+        alignContent: "center",
+        alignSelf: "center",
+      },
+      sendButton: {
+        borderWidth: 1,
+        backgroundColor: "white",
+        width: 200,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 10,
+        marginTop: 70,
+        color: "#EF3006",
+        borderColor: "#EF3006",
+      },
+      sendButtonText: {
+        color: "#EF3006",
+        fontSize: 20,
+        fontFamily: "Archivo_Condensed-SemiBoldItalic.ttf",
+      },
 });

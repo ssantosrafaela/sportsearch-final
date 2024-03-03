@@ -56,13 +56,13 @@ const [observacoes, setObservacoes] = useState("");
 
   return (
           <ScrollView style={styles.ScrollViewStyle}>
-         <TouchableOpacity
+         {/* <TouchableOpacity
             onPress={() => nav.navigate("puxaimg")}
             style={{marginTop: 18,}}
           >
             <Ionicons name="arrow-back" color="#fff" size={30} />
           </TouchableOpacity>
-        
+         */}
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "#1d2f4d" }}>
         
       <Image source={{ uri: image }} style={{ width: 135, height: 135, borderRadius: 999, borderWidth: 1, borderColor: "#EF3006" ,backgroundColor: '#273854' }} />

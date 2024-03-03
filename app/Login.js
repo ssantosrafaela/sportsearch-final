@@ -25,7 +25,7 @@ export default () =>  {
     "Archivo_ExtraCondensed-BlackItalic.ttf": require("../assets/fonts/Archivo_ExtraCondensed-BlackItalic.ttf"),
     "Archivo_Condensed-SemiBoldItalic.ttf": require("../assets/fonts/Archivo_Condensed-SemiBoldItalic.ttf"),
   });
-  const [textUser, setUser] = useState("teste7@gmail.com");
+  const [textUser, setUser] = useState("a@gmail.com");
   const [textPassword, setPassword] = useState("123456");
   const [hidePass, setHidePass] = useState(true);
 
