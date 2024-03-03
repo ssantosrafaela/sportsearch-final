@@ -95,7 +95,7 @@ export default function ReplacePass() {
            accessibilityHint="Clique para enviar o email para sua conta.">Enviar</Text>
         </Pressable>
 
-        <View style={{ marginTop: 80 }}>
+        {/* <View style={{ marginTop: 80 }}>
           <Pressable onPress={() => nav.navigate("Login")}>
             <Text
               style={{
@@ -111,7 +111,7 @@ export default function ReplacePass() {
               Recuperar E-mail
             </Text>
           </Pressable>
-        </View>
+        </View> */}
       </View>
     </KeyboardAvoidingView>
   );
