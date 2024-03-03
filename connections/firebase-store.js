@@ -9,7 +9,7 @@ import {
   deleteDoc,
   deleteUser,
 } from "firebase/firestore";
-import { auth } from "./firebase-auth";
+import { auth, deleteEmailAndPassword } from "./firebase-auth";
 import { app } from "./firebase-app";
 import { getStorage } from 'firebase/storage'; 
 import { initializeApp } from "firebase/app";
@@ -113,12 +113,30 @@ const deleteUserFirestore = async () => {
   const uid = auth.currentUser.uid;
   try {
     await deleteDoc(doc(db, "users", uid));
+    await deleteEmailAndPassword();
     console.log("User deleted successfully");
   } catch (error) {
     console.error("Error deleting user: ", error);
     throw error; // re-throw the error so it can be handled upstream
   }
 }
+
+
+
+
+const deleteEventFirestore = async () => {
+  const uid = auth.currentUser.uid;
+  try {
+    await deleteDoc(doc(db, "eventos", uid));
+    console.log("Event deleted successfully");
+  } catch (error) {
+    console.error("Error deleting event: ", error);
+    throw error; // re-throw the error so it can be handled upstream
+  }
+}
+
+
+
 
 const addImgFirestore = async (url) => {
   const data = {
@@ -132,7 +150,7 @@ const addImgFirestore = async (url) => {
   }
 }
 
-export { addUserFirestore, getProfileFromUid, addEventFirestore, getEventos, deleteUserStore, addImgFirestore, deleteUserFirestore};
+export { addUserFirestore, getProfileFromUid, addEventFirestore, getEventos, deleteUserStore, addImgFirestore, deleteEventFirestore, deleteUserFirestore, fbStorage };
 
 // usuário oferecer esportes e poder participar de outros esportes oferecidos por outros usuários (ex: futebol, vôlei, basquete, etc).
 // O usuário poderá oferecer um esporte e definir o local, data e horário que ele será realizado.

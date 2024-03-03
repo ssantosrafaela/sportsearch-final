@@ -15,6 +15,7 @@ import {
   FontAwesome,
 } from "@expo/vector-icons";
 import { getIdToken } from "firebase/auth";
+import { deleteEventFirestore } from "../connections/firebase-store";
 
 export default function Evento(props) {
   const nav = useNavigation();
@@ -93,7 +94,7 @@ export default function Evento(props) {
              
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={deleteEventFirestore}>
               <Ionicons name="trash" size={24} color="white" />
             </TouchableOpacity>
           </View>

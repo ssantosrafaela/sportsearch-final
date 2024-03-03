@@ -164,7 +164,7 @@ export default function PerfilDeVerdade(props) {
                   borderColor: "#ef3006",
                   borderRadius: 10,
                 }}
-                onPress={() => nav.navigate("testeimagem")}
+                onPress={() => nav.navigate("editProfile")}
               >
                 <Text style={{ color: "#ef3006" }}>Editar Perfil</Text>
               </TouchableOpacity>

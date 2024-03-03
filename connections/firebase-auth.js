@@ -15,6 +15,31 @@ const emailLogin = async (email, password) => {
         });
     return userCredential
 }
+
+//FUNCAO PARA DELETAR EMAIL E SENHA DO USUARIO
+const deleteEmailAndPassword = async () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+      await deleteUser(user);
+    } else {
+      console.warn("No user is currently signed in");
+    }
+  }
+
+//FUNCAO PARA DELETAR EMAIL E SENHA DO USUARIO
+// const deleteEmailAndPassword = async () => {
+//     const user = getAuth().currentUser;
+//     if (user) {
+//         await deleteEmailAndPassword(user);
+//     } else {
+//         console.warn("No user is currently signed in");
+//     }
+// }
+
+
+
+
     //CHAMA A FUNCAO DO FIREBASE E ENTAO RETORNA AS CREDENCIAIS
 //FUNCAO PARA CRIAR USUARIO
 const createUser = async (email, pass) => {
@@ -42,5 +67,5 @@ export { app,
     emailLogin, //
     createUser, 
     signOutFirebase, 
-
+    deleteEmailAndPassword
 }
