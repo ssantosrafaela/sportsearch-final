@@ -245,7 +245,7 @@ export default function Config() {
 
               <View style={styles.semitituto}>
                 <TouchableOpacity
-                onPress = {() => nav.navigate("RelatarProblema")}>
+              onPress = {() => (buttonAlert())}>
                   <View style={styles.linhas}>
                     <Ionicons
                       name="help-circle"
@@ -262,7 +262,8 @@ export default function Config() {
                     />
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity
+                onPress = {() => (buttonAlert())}>
                   <View style={styles.linhas}>
                     <Ionicons
                       name="mail-outline"
