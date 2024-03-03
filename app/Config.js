@@ -21,7 +21,7 @@ import Cima from "../components/Cima";
 import Baixo from "../components/Baixo";
 import { signOutFirebase } from "../connections/firebase-auth";
 import { useFonts } from "expo-font";
-import { deleteUserStore } from "../connections/firebase-store";
+import { deleteUserFirestore } from "../connections/firebase-store";
 
 export default function Config() {
 
@@ -106,7 +106,7 @@ export default function Config() {
                   </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress = {()=>(TryDeleteUser())}>
+                <TouchableOpacity onPress = {()=>(deleteUserFirestore())}>
                   <View style={styles.linhas}>
                     <AntDesign
                       name="deleteuser"
@@ -284,9 +284,9 @@ export default function Config() {
 
                 }
                 onPress={() => {
-                  // trySignOut();
-                  // nav.navigate("index");
-                  nav.navigate("testedois");
+                   trySignOut();
+                  nav.navigate("index");
+                //  nav.navigate("testedois");
                 }}
               >
                 <Text style={{ color: "#ef3006", fontSize:22 }}>Sair</Text>

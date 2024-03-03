@@ -4,14 +4,15 @@ import {
   addDoc,
   setDoc,
   doc,
-  getDocs, getDoc,
+  getDocs,
+  getDoc,
   deleteDoc,
   deleteUser,
 } from "firebase/firestore";
 import { auth } from "./firebase-auth";
 import { app } from "./firebase-app";
 import { getStorage } from 'firebase/storage'; 
-
+import { initializeApp } from "firebase/app";
 const fbStorage = getStorage();
 
 const db = getFirestore(app);
@@ -55,9 +56,9 @@ const addEventFirestore = async (
   horario,
   dataEvento,
   vagas,
-//  atualPessoas,
+  atualPessoas,
   valor,
-//  observacoes,
+  observacoes,
 ) => {
   const uid = auth.currentUser.uid;
   const data = {
@@ -69,9 +70,9 @@ const addEventFirestore = async (
     dataEvento: dataEvento,
     horario: horario,
     vagas: vagas,
-   // atualPessoas: atualPessoas,
+    atualPessoas: atualPessoas,
     valor: valor,
-  //  observacoes: observacoes,
+    observacoes: observacoes,
   };
   return await addDoc(collection(db, "eventos"), data);
 };
@@ -98,6 +99,7 @@ const getEventos = async () =>{
   listDocs = querySnapshot.docs.map((d) => d.data())
   return listDocs;  
 }
+
 const deleteUserStore = async () => {
   const user = auth.currentUser;
   deleteUser(user).then(() => {
@@ -105,6 +107,17 @@ const deleteUserStore = async () => {
   }).catch((error) => {
       console.warn(`Error: ${error}`);
   });
+}
+
+const deleteUserFirestore = async () => {
+  const uid = auth.currentUser.uid;
+  try {
+    await deleteDoc(doc(db, "users", uid));
+    console.log("User deleted successfully");
+  } catch (error) {
+    console.error("Error deleting user: ", error);
+    throw error; // re-throw the error so it can be handled upstream
+  }
 }
 
 const addImgFirestore = async (url) => {
@@ -119,7 +132,7 @@ const addImgFirestore = async (url) => {
   }
 }
 
-export { addUserFirestore, getProfileFromUid, addEventFirestore, getEventos, deleteUserStore, addImgFirestore};
+export { addUserFirestore, getProfileFromUid, addEventFirestore, getEventos, deleteUserStore, addImgFirestore, deleteUserFirestore};
 
 // usuário oferecer esportes e poder participar de outros esportes oferecidos por outros usuários (ex: futebol, vôlei, basquete, etc).
 // O usuário poderá oferecer um esporte e definir o local, data e horário que ele será realizado.
