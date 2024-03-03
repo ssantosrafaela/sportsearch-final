@@ -170,7 +170,8 @@ export default function Config() {
                     />
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity
+                onPress = {() => nav.navigate("replaceEmail")}>
                   <View style={styles.linhas}>
                     <Ionicons 
                     name="mail-outline"
