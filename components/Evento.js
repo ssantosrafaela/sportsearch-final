@@ -113,30 +113,8 @@ export default function Evento(props) {
               <Ionicons name="create" size={24} color="white" />
             </TouchableOpacity>
           </View>
-        {/* </View> */}
       </View>
 
-      <View
-        style={{
-          flexDirection: "row",
-          alignSelf: "left",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: -15,
-          marginLeft: 23.5,
-          borderLeftWidth: 2,
-          borderBottomWidth: 2,
-          borderRightWidth: 2,
-          borderBottomLeftRadius: 10,
-          borderBottomRightRadius: 10,
-          borderColor: "#EF3006",
-          width: "auto",
-          padding: 5,
-        }}
-      >
-        <MaterialCommunityIcons name="account" size={24} color="white" />
-        <Text style={{ color: "white" }}>Criado por usuário</Text>
-      </View>
     </>
   );
 }
@@ -150,19 +128,17 @@ const styles = StyleSheet.create({
   },
   evento: {
     width: "70%",
-    height: 240,
-    //  justifyContent: "center",
+    height: 240,  
     backgroundColor: "#1d2f4d",
-    // borderRadius: 10,
     marginTop: 15,
     marginBottom: 15,
     padding: 10,
-    // borderWidth: 2,
     borderColor: "#EF3006",
     borderLeftWidth: 2,
     borderTopWidth: 2,
     borderBottomWidth: 2,
     borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     borderRightWidth: 2,
   },

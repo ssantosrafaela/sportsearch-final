@@ -10,6 +10,9 @@ import {
 } from "firebase/firestore";
 import { auth } from "./firebase-auth";
 import { app } from "./firebase-app";
+import { getStorage } from 'firebase/storage'; 
+
+const fbStorage = getStorage();
 
 const db = getFirestore(app);
 
@@ -53,7 +56,7 @@ const addEventFirestore = async (
   dataEvento,
   vagas,
 //  atualPessoas,
-//  valor,
+  valor,
 //  observacoes,
 ) => {
   const uid = auth.currentUser.uid;
@@ -67,7 +70,7 @@ const addEventFirestore = async (
     horario: horario,
     vagas: vagas,
    // atualPessoas: atualPessoas,
-  //  valor: valor,
+    valor: valor,
   //  observacoes: observacoes,
   };
   return await addDoc(collection(db, "eventos"), data);
@@ -104,7 +107,19 @@ const deleteUserStore = async () => {
   });
 }
 
-export { addUserFirestore, getProfileFromUid, addEventFirestore, getEventos, deleteUserStore};
+const addImgFirestore = async (url) => {
+  const data = {
+    url: url,
+  };
+  try {
+    return await addDoc(collection(db, "images"), data);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    throw error; // re-throw the error so it can be handled upstream
+  }
+}
+
+export { addUserFirestore, getProfileFromUid, addEventFirestore, getEventos, deleteUserStore, addImgFirestore};
 
 // usuário oferecer esportes e poder participar de outros esportes oferecidos por outros usuários (ex: futebol, vôlei, basquete, etc).
 // O usuário poderá oferecer um esporte e definir o local, data e horário que ele será realizado.

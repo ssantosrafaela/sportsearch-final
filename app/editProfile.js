@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import {View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { useFonts } from 'expo-font';
 import { KeyboardAvoidingView } from 'react-native';
-import { TextInput } from 'react-native';
 import { Image } from 'react-native';
-import { textProfile } from '../connections/firebase-store';
-import Cima from '../components/Cima';
-import Baixo from '../components/Baixo';
-import Adiciona from '../components/Adiciona';
 import { useNavigation } from 'expo-router';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+
 
 
 export default function EditProfile(){
@@ -29,7 +24,13 @@ export default function EditProfile(){
         >
          
           <ScrollView style={styles.ScrollViewStyle}>
-
+         <TouchableOpacity
+            onPress={() => nav.navigate("PerfilDeVerdade")}
+            style={{marginTop: 18,}}
+          >
+            <Ionicons name="arrow-back" color="#fff" size={30} />
+          </TouchableOpacity>
+        
             <View style={styles.cima}>
               <View style={{ width: "100%" }}>
                 <Image

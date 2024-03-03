@@ -80,10 +80,10 @@ const [textPronome, setPronome] = useState("");
 
 const [textGenre, setGenre] = useState("");
 const gnr = [
-  { label: "Mulher Cis", value: "Mulher Cis" },
-    { label: "Mulher Trans", value: "Mulher Trans"},
-    { label: "Homem Cis", value: "Homem Cis" },
-    { label: "Homem Trans", value: "Homem Trans"},
+  { label: "Mulher cis", value: "Mulher cis" },
+    { label: "Mulher trans", value: "Mulher trans"},
+    { label: "Homem cis", value: "Homem cis" },
+    { label: "Homem trans", value: "Homem trans"},
     { label: "Não-binário", value: "Não-binário" },
     { label: "Prefiro não informar", value: "Prefiro não informar" },
 ]

@@ -1,18 +1,12 @@
-//ARQUIVO PARA FAZER AUTENTICAÇÃO
-
-// Import the functions you need from the SDKs you need
 import {app} from "./firebase-app"
 //import { getAnalytics } from "firebase/analytics";
 import { initializeAuth, getReactNativePersistence, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
-//MANTÉM A SESSAO MESMO APÓS FECHAR E ABRIR O APP
-//AQUI PARA QUEM TRABALHA SEM SER O REACT NATIVE, TERÁ QUE VER OUTRA FORMA
 const auth = initializeAuth(app, {
     persistence: getReactNativePersistence(ReactNativeAsyncStorage)
 });
-//USER CREDENTIAL É O OBJETO COM AS CREDENCIAIS DO USUARIO
-//FUNÇÃO PARA REALIZAR O LOGIN
+
 const emailLogin = async (email, password) => { 
     const userCredential = await signInWithEmailAndPassword(auth, email, password)
         .catch(error => { 
@@ -30,19 +24,6 @@ const createUser = async (email, pass) => {
         });
         return userCredential;     
     }
-    //CHAMA FUNCAO EM firebase-store
-   // addUserFirestore(userCredential, "Leticia Pedrinho", "123.456.789-00","53 9991730000", "27/07/1996")
-
-    // updateProfile(userCredential.user, {
-    //     displayName: name
-    // }).then(() => {
-    //     console.log("Feitorias")
-    // }).catch((error) => {
-    //     console.warn("Deu ruim")
-    //     console.warn(error)
-    // });
-
-
 
 //REALIZA O SIGNOUT NO FIREBASE
 const signOutFirebase = async () => {

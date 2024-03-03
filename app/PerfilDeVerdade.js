@@ -78,7 +78,7 @@ export default function PerfilDeVerdade(props) {
                   style={styles.iconImg}
                 />
 
-                <View style={{ position: "absolute", left: 250, top: 40 }}>
+                <View style={{ position: "absolute", left: 230, top: 40 }}>
                   <View
                     style={{
                       
@@ -159,7 +159,7 @@ export default function PerfilDeVerdade(props) {
                   borderColor: "#ef3006",
                   borderRadius: 10,
                 }}
-                onPress={() => nav.navigate("editProfile")}
+                onPress={() => nav.navigate("testeimagem")}
               >
                 <Text style={{ color: "#ef3006" }}>Editar Perfil</Text>
               </TouchableOpacity>
