@@ -244,7 +244,8 @@ export default function Config() {
               <Text style={styles.texticulo}>Ajuda</Text>
 
               <View style={styles.semitituto}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                onPress = {() => nav.navigate("RelatarProblema")}>
                   <View style={styles.linhas}>
                     <Ionicons
                       name="help-circle"
