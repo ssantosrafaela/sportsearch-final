@@ -141,7 +141,10 @@ const sexuality =[
         >
           <SafeAreaView style={styles.teste}>
             <ScrollView>
-              <View style={styles.topBack}>
+              <View style={styles.topBack}
+              accessible={true}
+              accessibilityLabel="Botão de voltar."
+              accessibilityHint="Clique para voltar para a tela inicial.">
                 <TouchableOpacity
                   onPress={() => nav.navigate("index")}
                   style={styles.back}
@@ -150,7 +153,10 @@ const sexuality =[
                 </TouchableOpacity>
               </View>
 
-              <View style={styles.cima}>
+              <View style={styles.cima}
+              accessible={true}
+              accessibilityLabel="SportSearch."
+              accessibilityHint="Insira seus dados nos campos de texto para se cadastrar no aplicativo.">
                 <Text style={styles.titulo}>Sport Search</Text>
                 <Text style={styles.subtitulo}>
                   Insira seus dados para se cadastrar
@@ -159,7 +165,10 @@ const sexuality =[
 
               <View style={styles.meio}>
                 <View
-                style = {styles.viewDados}>
+                style = {styles.viewDados}
+                accessible={true}
+            accessibilityLabel="Dados pessoais"
+            accessibilityHint="Aqueles que aparecerão no seu perfil pessoal.">
                   <Text style={styles.dados}>Dados Pessoais:</Text>
                 </View>
 
@@ -169,6 +178,7 @@ const sexuality =[
                     label="Digite seu nome"
                     setValue={setNome}
                     value={textNome}
+                
                   />
 
                   <Entrada
@@ -260,6 +270,9 @@ const sexuality =[
                         marginBottom: 20,
                       }}
                       inputStyles={{ color: "white" }}
+                      accessible={true}
+            accessibilityLabel="Selecione sua identidade de gênero."
+            accessibilityHint="Botão para selecionar sua identidade de gênero."
                       
                     />
                 
@@ -304,7 +317,10 @@ const sexuality =[
                   <View style={styles.meio}>
                     <View style = {styles.viewDados}>
                       
-                        <Text style={styles.dados}>
+                        <Text style={styles.dados}
+                        accessible={true}
+                        accessibilityLabel="Dados de entrada"
+                        accessibilityHint="Aqueles que serão utilizados para entrar no aplicativo.">
                           Dados de Entrada:
                         </Text>
                       
@@ -313,7 +329,7 @@ const sexuality =[
 
                   <View style={styles.meio}>
                     <Entrada
-                      text={"Email"}
+                      text={"Insira seu email"}
                       label={"Digite seu email "}
                       setValue={setEmail}
                       value={textEmail}
@@ -376,9 +392,7 @@ const sexuality =[
                       />
                       <Text
                       style={styles.textCheck}
-                      onPress = {() => {
-                        Linking.openURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-                      }}>Aceitar os termos de uso</Text>
+                     >Aceitar os termos de uso</Text>
                       </View>
 
               <View style={styles.next}>
@@ -387,7 +401,10 @@ const sexuality =[
                   onPress={() => {tryCreateUser()}
                   }
                 >
-                  <Text style={styles.textoBotaoEntrar}>Cadastrar</Text>
+                  <Text style={styles.textoBotaoEntrar}
+                  accessible={true}
+                  accessibilityLabel="Botão de cadastrar."
+                  accessibilityHint="Ao clicar aqui, se seus dados estiverem preenchidos, você será redirecionado a tela de entrar.">Cadastrar</Text>
                 </TouchableOpacity>
               </View>
             </ScrollView>

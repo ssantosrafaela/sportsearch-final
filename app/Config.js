@@ -267,6 +267,9 @@ export default function Config() {
                 </View>
             <View style={styles.baixo}>
               <TouchableOpacity
+               accessible={true}
+               accessibilityLabel="Botão para sair do aplicativo"
+               accessibilityHint="Após clicado você será redirecionado a tela de entrada do aplicativo."
                 style={{
                   alignSelf: "center",
                   borderWidth: 1,

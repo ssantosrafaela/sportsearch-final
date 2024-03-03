@@ -59,7 +59,10 @@ export default () =>  {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={{ backgroundColor: "#1D2F4D" }}
           >
-            <View style={styles.topBack}>
+            <View style={styles.topBack}
+            accessible={true}
+            accessibilityLabel="Botão de voltar."
+            accessibilityHint="Clique para voltar para a tela inicial.">
               <TouchableOpacity
                 onPress={() => nav.navigate("index")}
                 style={styles.back}
@@ -67,7 +70,10 @@ export default () =>  {
                 <Ionicons name="arrow-back" color="#fff" size={30} />
               </TouchableOpacity>
             </View>
-            <View style={styles.cima}>
+            <View style={styles.cima}
+            accessible={true}
+            accessibilityLabel="Sport Search"
+            accessibilityHint="Insira seus dados para entrar no aplicativo.">
               <Text style={styles.titulo}>Sport Search</Text>
               <Text style={styles.subtitulo}>Entre para continuar</Text>
             </View>
@@ -76,9 +82,12 @@ export default () =>  {
                 style={styles.input}
                 onChangeText={(e) => setUser(e)}
                 value={textUser}
-                placeholder="E-mail"
+                placeholder="Insira seu E-mail"
                 placeholderTextColor={"#fff"}
                 keyboardType="email-address"
+                accessible={true}
+            
+              
               />
 
               <View style={styles.inputArea}>
@@ -89,6 +98,7 @@ export default () =>  {
                   value={textPassword}
                   onChangeText={(t) => setPassword(t)}
                   secureTextEntry={hidePass}
+                  accessible={true}
                 />
                 <TouchableOpacity
                   style={styles.icon}
@@ -104,6 +114,9 @@ export default () =>  {
 
               <TouchableOpacity
                 style={styles.botaoEntrar}
+                accessible={true}
+        accessibilityLabel="Entrar"
+        accessibilityHint="Após clicado você será redirecionado a tela inicial do aplicativo."
                 onPress={() => {
                   if (textUser == "" || textPassword == "") {
                     alert("Preencha os campos");
@@ -112,12 +125,16 @@ export default () =>  {
                   }
                 }}
               >
-                <Text style={styles.textoBotaoEntrar}>Entrar</Text>
+                <Text style={styles.textoBotaoEntrar}
+                >Entrar</Text>
               </TouchableOpacity>
             </View>
 
             <View style={styles.baixo}>
               <Text 
+              accessible={true}
+              accessibilityLabel="Esqueceu a senha?"
+              accessibilityHint="Clique para recuperar a senha."
               style={styles.textoBaixo}
               onPress = {() => nav.navigate("replacePass")}>Esqueceu a senha?</Text>
             </View>

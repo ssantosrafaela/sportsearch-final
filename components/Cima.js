@@ -5,6 +5,8 @@ export default function Cima(){
 
     return(
         <View
+        accessible={true}
+        accessibilityLabel="Logo do aplicativo Sport Search."
         style={{
           height: "9%",
           alignItems: "center",

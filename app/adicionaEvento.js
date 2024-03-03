@@ -65,6 +65,9 @@ export default function adicionaEvento() {
           <View>
             <StatusBar backgroundColor="#1d2f4d" barStyle="light-content" />
             <TouchableOpacity
+             accessible={true}
+             accessibilityLabel="Botão para voltar para a tela inicial."
+             accessibilityHint="Após clicado você será redirecionado a tela inicial."
               style={{ marginTop: 20 }}
               onPress={() => nav.navigate("Home")}
             >
@@ -72,7 +75,10 @@ export default function adicionaEvento() {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.cima}>
+          <View style={styles.cima} 
+          accessible={true}
+     accessibilityLabel="Dados do evento."
+     accessibilityHint="Logo abaixo possui caixas de texto para informar os dados principais do evento.">
             <Text style={styles.titulo}> Dados do Evento</Text>
           </View>
 
@@ -155,7 +161,10 @@ export default function adicionaEvento() {
                 nav.navigate("Home");
               }}
             >
-              <Text style={styles.txtBotaoAdc}>Adicionar</Text>
+              <Text style={styles.txtBotaoAdc}
+               accessible={true}
+               accessibilityLabel= "Botão para adicionar evento."
+               accessibilityHint= "Após clicado você será redirecionado a tela inicial do aplicativo.">Adicionar</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>

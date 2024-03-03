@@ -63,22 +63,24 @@ export default function PerfilDeVerdade(props) {
           <Cima />
           <ScrollView style={styles.ScrollViewStyle}>
             <View style={styles.cima}>
-              <View style={{ width: "100%" }}>
+              {/* <View style={{ width: "100%" }}>
                 <Image
                   source={require("../assets/uai.png")}
                   resizeMode="cover"
                   style={styles.headerImg}
                 />
-              </View>
+              </View> */}
 
               <View>
                 <Image
+                 accessible={true}
+                 accessibilityLabel="Foto de perfil do usuário"
                   source={require("../assets/billie.png")} //billie.png funciona e fica bom
                   resizeMode="cover"
                   style={styles.iconImg}
                 />
 
-                <View style={{ position: "absolute", left: 230, top: 40 }}>
+                <View style={{ position: "absolute", left: 260, top: 150 }}>
                   <View
                     style={{
                       
@@ -106,6 +108,8 @@ export default function PerfilDeVerdade(props) {
 
                 <View
                   style={{ flexDirection: "row", justifyContent: "center" }}
+                  accessible={true}
+
                 >
                   <Text style={styles.nome}>{textProfile.name} {textProfile.lastName}</Text> 
                   <Text
@@ -122,6 +126,7 @@ export default function PerfilDeVerdade(props) {
 
               <View style={styles.localizaaipapaizinho}>
                 <MaterialIcons
+
                   name="location-on"
                   size={24}
                   color="white"
@@ -132,7 +137,7 @@ export default function PerfilDeVerdade(props) {
                 </Text>
               </View>
 
-              <View style={{ alignItems: "center" }}>
+              <View style={{ alignItems: "center" }}  accessible={true}>
                 <View style={styles.bio}>
                   <Text
                     style={{
@@ -147,7 +152,7 @@ export default function PerfilDeVerdade(props) {
                 </View>
               </View>
             </View>
-            <View style={{ position: "absolute", left: 270, top: 167 }}>
+            <View style={{ position: "absolute", left: 250, top: 100 }}>
               <TouchableOpacity
                 style={{
                   padding: 10,
@@ -177,7 +182,9 @@ export default function PerfilDeVerdade(props) {
     </View> */}
             </View>
           </ScrollView>
-          <Adiciona />
+          <Adiciona  accessible={true}
+     accessibilityLabel="Botão para criar eventos"
+     accessibilityHint="Após clicado você será redirecionado a tela de criação de eventos esportivos."/>
           <Baixo />
         </KeyboardAvoidingView>
       </>
@@ -209,13 +216,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#273854'
   },
   iconImg: {
-    height: 135,
-    width: 135,
+    height: 145,
+    width: 145,
     borderRadius: 999,
     borderColor: "#EF3006",
     borderWidth: 1.4,
-    marginTop: -40,
-    marginBottom: 10,
+  //  marginTop: -40,
+  marginTop: 60,
+    marginBottom: 20,
     marginLeft: 50,
     backgroundColor: "#273854",
   },

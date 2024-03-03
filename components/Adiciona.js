@@ -7,8 +7,15 @@ export default function Adiciona(props) {
   const nav = useNavigation();
   return (
     <>
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.button} onPress={() => nav.navigate("adicionaEvento")}>
+    <View>
+      <View>
+        <TouchableOpacity
+          accessible={true}
+          accessibilityLabel="Botão para criar eventos"
+          accessibilityHint="Após clicado você será redirecionado a tela de criação de eventos esportivos."
+          style={styles.button}
+          onPress={() => nav.navigate("adicionaEvento")}
+        >
           <Entypo
             name="plus"
             size={43}
@@ -17,6 +24,7 @@ export default function Adiciona(props) {
           />
         </TouchableOpacity>
       </View>
+    </View>
     </>
   );
 }

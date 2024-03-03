@@ -45,7 +45,7 @@ export default function ReplacePass() {
   if(replacePassword == true){
     nav.navigate("Login");
   }else{
-    nav.navigate("")
+    console.log("Erro");
   }
 
 
@@ -55,7 +55,11 @@ export default function ReplacePass() {
       style={styles.containerScrollView}
     >
       <SafeAreaView />
-      <View style={styles.topBack}>
+      <View style={styles.topBack}
+      accessible={true}
+      accessibilityLabel="Botão de voltar."
+      accessibilityHint="Clique para voltar para a tela inicial."
+      >
         <TouchableOpacity
           onPress={() => nav.navigate("Login")}
           style={styles.back}
@@ -63,7 +67,10 @@ export default function ReplacePass() {
           <Ionicons name="arrow-back" color="#fff" size={30} />
         </TouchableOpacity>
       </View>
-      <View style={styles.cima}>
+      <View style={styles.cima}
+      accessible={true}
+      accessibilityLabel="Redefina sua senha"
+      accessibilityHint="Insira um email válido e logo após confira sua caixa de entrada.">
         <Text style={styles.formTitle}>Redefinição de Senha</Text>
         <Text style={styles.subtitulo}>
           Insira seu email e confira a caixa de entrada!
@@ -82,7 +89,10 @@ export default function ReplacePass() {
         />
 
         <Pressable style={styles.sendButton} onPress={replacePassword}>
-          <Text style={styles.sendButtonText}>Enviar</Text>
+          <Text style={styles.sendButtonText}
+           accessible={true}
+           accessibilityLabel="Botão de enviar."
+           accessibilityHint="Clique para enviar o email para sua conta.">Enviar</Text>
         </Pressable>
 
         <View style={{ marginTop: 80 }}>

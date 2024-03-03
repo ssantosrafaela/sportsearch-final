@@ -78,15 +78,19 @@ export default function Home() {
              style={styles.wrapper}
              showsButtons={true}
              autoplay={true}
-             autoplayTimeout={5} >
+             autoplayTimeout={12} >
               <View style={styles.slide}>
                 <Image
+                accessible={true}
+            accessibilityLabel="Imagem."
                   source={require("../assets/inclusao.png")}
                   style={styles.image}
                 />
               </View>
               <View style={styles.slide}>
                 <Image
+                accessible={true}
+                accessibilityLabel="Imagem."
                   source={require("../assets/beneficios.png")}
                   style={styles.image}
                 />
@@ -94,12 +98,16 @@ export default function Home() {
             </Swiper>
           </View>
           <View style={styles.meio}>
-            <Text style={styles.titulo}>Eventos Disponíveis</Text>
+            <Text style={styles.titulo}
+            accessible={true}
+            accessibilityLabel="Eventos disponíveis para a participação."
+            >Eventos Disponíveis</Text>
           </View>  
 
           <View style={styles.baixo}></View>
           {listaEventos.map((evento, i) => (
           <Evento
+          
             key={i}
             id={evento.id}
             nome={evento.nome}

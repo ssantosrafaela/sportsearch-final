@@ -5,21 +5,30 @@ import { useNavigation } from 'expo-router';
 
 export default function Baixo(){
     const nav = useNavigation();
-    return(
+    return (
         <>
             <View style={styles.baixo}>
-                <TouchableOpacity onPress = {() => nav.navigate('Home')}>
+                <TouchableOpacity
+                    accessible={true}
+                
+                    onPress={() => nav.navigate('Home')}
+                >
                     <Entypo name="home" size={30} color='white' />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => nav.navigate('Config')}>
+                <TouchableOpacity
+                    accessible={true}
+                    onPress={() => nav.navigate('Config')}
+                >
                     <Ionicons name="settings" size={30} color='white' />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => nav.navigate('PerfilDeVerdade')}>
+                <TouchableOpacity
+                    accessible={true}
+                    onPress={() => nav.navigate('PerfilDeVerdade')}
+                >
                     <Ionicons name="person" size={30} color='white' />
-                </TouchableOpacity>    
-
+                </TouchableOpacity>
             </View>
         </>
     )

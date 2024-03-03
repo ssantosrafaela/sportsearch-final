@@ -19,8 +19,13 @@ export default function Open() {
 
   return fontsLoaded ? (
     <>
-      <View style={styles.cima}>
-        <Text style={styles.titulo}>Sport Search</Text>
+      <View style={styles.cima}
+      accessible={true}
+      accessibilityLabel="Sport Search"
+      accessibilityHint="A inclusão no esporte através de um aplicativo.">
+        <Text 
+        style={styles.titulo}
+        >Sport Search</Text>
         <Text style={styles.subtitulo}>
           A inclusão no esporte através de um aplicativo.
         </Text>
@@ -31,18 +36,27 @@ export default function Open() {
           style={styles.botao}
           // onPress={() => nav.navigate("Login")}
           onPress={() => nav.navigate("Login")}
+          accessible={true}
+        accessibilityLabel="Entrar no aplicativo."
+        accessibilityHint="Clique para entrar no aplicativo se já possui cadastro."
         >
           <Text style={styles.textoBotao}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.botao}
           onPress={() => nav.navigate("Register")}
+          accessible={true}
+        accessibilityLabel="Cadastrar no aplicativo"
+        accessibilityHint="Clique para se cadastrar no aplicativo caso não possua cadastro."
         >
           <Text style={styles.textoBotao}>Cadastrar</Text>
         </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.baixo}>
+      <View style={styles.baixo}
+      accessible={true}
+      accessibilityLabel="Desenvolvido por Rafaela Santos"
+      accessibilityHint="Link para o instagram de Rafaela">
         <View style={{flexDirection: 'row', marginTop: 40,}}>
         <Text style={styles.textoBaixo}>desenvolvido por </Text>
         <Text
